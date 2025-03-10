@@ -1,0 +1,30 @@
+---
+import logo from '../assets/logo.png';
+import Github from '../assets/icons/github.svg';
+import Gitlab from '../assets/icons/gitlab.svg';
+import Linkedin from '../assets/icons/linkedin.svg';
+---
+<style lang="scss">
+    .logo img {
+      width: 386px;
+    }
+
+</style>
+<header>
+    <div class="flex px-16 py-6 justify-between items-center">
+        <a href="/" class="logo">
+            <img src={logo.src} alt="Jonathan Mourier's logo"/>
+        </a>
+
+        <nav>
+            <ul class="flex flex-end uppercase font-semibold text-md gap-7">
+                <li><a href="/">Qui suis-je</a></li>
+                <li><a href="/blog">Mon blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/cv"><Github /></a></li>
+                <li><a href="/cv"><Gitlab /></a></li>
+                <li><a href="/cv"><Linkedin /></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
