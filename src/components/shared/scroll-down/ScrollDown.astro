@@ -1,0 +1,75 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["scroll-down", className]}>
+    <div class="mouse">
+        <div class="wheel"></div>
+    </div>
+</div>
+
+<style>
+    .scroll-down {
+        position: relative;
+        width: 24px;
+        height: 60px;
+    }
+
+    .mouse {
+        width: 36px;
+        height: 61px;
+        border: 2px solid #333;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .wheel {
+        width: 4px;
+        height: 8px;
+        background: #333;
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+        animation: scroll 1.5s infinite;
+    }
+
+    .arrow span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-bottom: 2px solid #333;
+        border-right: 2px solid #333;
+        transform: rotate(45deg);
+        margin: -5px;
+        animation: arrow 1.5s infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(15px);
+        }
+    }
+
+    @keyframes arrow {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+</style>

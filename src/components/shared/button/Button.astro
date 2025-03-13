@@ -1,0 +1,58 @@
+---
+interface Props {
+    text: string;
+    href?: string;
+    variant?: 'primary' | 'secondary';
+    className?: string;
+    uppercase?: boolean;
+}
+
+const { text, href, variant = 'primary', className = '', uppercase = true } = Astro.props;
+
+const baseStyles = 'btn rounded-2xl text-sm flex border-2 border-[#AEB4BD] items-center py-2 px-12';
+const variants = {
+    primary: 'rounded-2xl flex border-2 border-[#AEB4BD] items-center py-2 px-12',
+    secondary: 'secondary rounded-2xl flex border-2 border-[#AEB4BD] items-center bg-[#0E161B] py-2 px-12'
+};
+---
+
+{
+    href ? (
+        <a
+            href={href}
+            class:list={[baseStyles, variants[variant], className, uppercase ? 'uppercase' : '']}
+        >
+            {text}
+        </a>
+    ) : (
+        <button
+            type="button"
+            class:list={[baseStyles, variants[variant], className]}
+        >
+            {text}
+        </button>
+    )
+}
+
+<style lang="scss">
+
+    .btn {
+        font-family: var(--open-sans);
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &.secondary {
+            box-shadow: 0px 4px 27px 0px #592E83;
+            transition: all 0.3s ease-in-out;
+            font-family: var(--open-sans);
+            color: white;
+            &:hover {
+                box-shadow: 0px 4px 27px 2px #592E83;
+            }
+    }
+    }
+    
+</style>

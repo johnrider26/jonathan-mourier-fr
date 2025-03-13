@@ -1,26 +1,58 @@
 ---
-import astroLogo from '../../assets/astro.svg';
-import background from '../../assets/background.svg';
 import * as subHeaderPost from '../../content/home/subheader.md';
 import Content from '../../content/home/subheader.md';
+import Language from '../shared/languages/Language.astro';
+import Button from '../shared/button/Button.astro';
+import Angular from '../../assets/icons/angular.svg';
+import Java from '../../assets/icons/java.svg';
+import SpringBoot from '../../assets/icons/spring.svg'
+import TypeScript from '../../assets/icons/typescript.svg';
+import Github from '../../assets/icons/github.svg';
+import Gitlab from '../../assets/icons/gitlab.svg';
+import Linkedin from '../../assets/icons/linkedin.svg';
+import ScrollDown from '../shared/scroll-down/ScrollDown.astro';
 ---
 
 <div id="subheader">
-    <div class="flex flex-col gap-4 items-center justify-center z-10 text-center container">
+    <div class="flex flex-col gap-4 items-center justify-center z-10 text-center container pt-[86px]">
         <small class="top-title">{subHeaderPost.frontmatter.topTitle}</small>
         <h1 class="title">{subHeaderPost.frontmatter.name},</h1>
         <h2 class="subtitle">{subHeaderPost.frontmatter.subtitle}</h2>
         <div class="text-3xl leading-12">
             <Content />
         </div>
-    </div>
+        <div class="languages flex items-center justify-center gap-12 py-4">
+            <Language name="Java">
+                <Java />
+            </Language>
+            <Language name="Spring Boot">
+                <SpringBoot />
+            </Language>
+            <Language name="TypeScript">
+                <TypeScript />
+            </Language>
+            <Language name="Angular">
+              <Angular />
+          </Language>
+        </div>
+        <div class="call-to-action flex items-center gap-8 ">
+          <Button text="Mon CV" href="#cv" variant="secondary" />
+          <Button text="Contact" href="/contact" />
+          <div class="divider"></div>
+          <a href="/cv"><Github class="icon-media" /></a>
+          <a href="/cv"><Gitlab class="icon-media" /></a>
+          <a href="/cv"><Linkedin class="icon-media" /></a>
+        </div>
+        <div class="pt-8">
+          <ScrollDown />
+        </div>
 </div>
 
 <style lang="scss">
 
     #subheader {
         position: relative;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -57,6 +89,12 @@ import Content from '../../content/home/subheader.md';
         font-size: 4rem;
         z-index: 1;
         font-weight: 700;
+      }
+
+      .divider {
+        width: 1px;
+        height: 50px;
+        background-color: #000;
       }
     }
 </style>
