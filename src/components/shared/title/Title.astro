@@ -1,0 +1,51 @@
+---
+interface Props {
+    text: string;
+    tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    className?: string;
+}
+
+const { text, tag = 'h1', className = '' } = Astro.props;
+
+const Element = tag;
+---
+
+<Element class:list={['font-extrabold mb-4 title', className]}>
+    {text}
+</Element>
+
+<style lang="scss">
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.75rem;
+    }
+    h4 {
+        font-size: 1.5rem;
+    }
+    h5 {
+        font-size: 1.25rem;
+    }
+    h6 {
+        font-size: 1rem;
+    }
+
+    .title {
+        position: relative;
+        z-index: 1;
+        &:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-primary);
+            bottom: -10px;
+            left: 0;
+        }
+    }
+</style>

@@ -1,28 +1,41 @@
 ---
 interface Props {
     class?: string;
+    scrollTo: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, scrollTo } = Astro.props;
 ---
 
-<div class:list={["scroll-down", className]}>
+<div class:list={["scroll-down", className]} data-scroll-to-id={scrollTo}>
     <div class="mouse">
         <div class="wheel"></div>
     </div>
 </div>
+
+<script>
+    const scrollDownElement = document.querySelector('.scroll-down');
+    const scrollToId = scrollDownElement?.getAttribute('data-scroll-to-id');
+    const targetElement = document.querySelector(`#${scrollToId}`);
+    if (scrollDownElement && targetElement) {
+        scrollDownElement.addEventListener('click', () => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+</script>
 
 <style>
     .scroll-down {
         position: relative;
         width: 24px;
         height: 60px;
+        cursor: pointer;
     }
 
     .mouse {
         width: 36px;
         height: 61px;
-        border: 2px solid #333;
+        border: 1px solid #333;
         border-radius: 20px;
         position: relative;
     }

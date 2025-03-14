@@ -44,7 +44,7 @@ import ScrollDown from '../shared/scroll-down/ScrollDown.astro';
           <a href="/cv"><Linkedin class="icon-media" /></a>
         </div>
         <div class="pt-8">
-          <ScrollDown />
+          <ScrollDown scrollTo="who-am-i" />
         </div>
 </div>
 
@@ -58,18 +58,31 @@ import ScrollDown from '../shared/scroll-down/ScrollDown.astro';
         align-items: center;
         flex-direction: column;
         background: url("../../assets/bg.png") lightgray 50% / cover no-repeat;
+        z-index: 0;
 
         &:after {
             content: "";
             position: absolute;
             background: linear-gradient(180deg, rgba(175, 155, 195, 1) 0.01%, #FFF 100%);
-            opacity: 0.85;
+            opacity: 0.8;
             background-blend-mode: overlay;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          background: linear-gradient(180deg, transparent 0%, #FFF 100%);
+          height: 300px;
+          background-blend-mode: overlay;
+          width: 100%;
+          bottom: 0;
+          left: 0;
+          z-index: 0;
         }
 
       small.top-title {
