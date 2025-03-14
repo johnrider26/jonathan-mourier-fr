@@ -1,9 +1,8 @@
 ---
 topTitle: 'Hey, bienvenue sur mon site ! 🌟'
-name: 'Je suis Jonathan Mourier'
-subtitle: 'Analyste Développeur'
-subtitle2: 'Chef de projet'
-subtitle3: 'Rider'
+iAm: 'Je suis Jonathan Mourier'
+words: ['Analyste Développeur', 'Chef de projets', 'Rider']
+myCv: 'Mon CV'
 ---
 
 Un **développeur back** qui sait faire du **front** et de la **gestion de projet**.

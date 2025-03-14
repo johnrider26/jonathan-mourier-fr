@@ -1,6 +1,4 @@
 ---
-import * as subHeaderPost from '../../content/home/subheader.md';
-import Content from '../../content/home/subheader.md';
 import Language from '../shared/languages/Language.astro';
 import Button from '../shared/button/Button.astro';
 import Angular from '../../assets/icons/angular.svg';
@@ -11,15 +9,33 @@ import Github from '../../assets/icons/github.svg';
 import Gitlab from '../../assets/icons/gitlab.svg';
 import Linkedin from '../../assets/icons/linkedin.svg';
 import ScrollDown from '../shared/scroll-down/ScrollDown.astro';
+import AnimatedTitle from '../shared/title/AnimatedTitle.astro';
+
+interface Props {
+    topTitle: string;
+    iAm: string;
+    words: string[];
+    myCv: string;
+}
+
+const {
+    topTitle = "",
+    iAm = "",
+    words = [],
+    myCv = ""
+} = Astro.props;
+
+
 ---
 
 <div id="subheader">
     <div class="flex flex-col gap-4 items-center justify-center z-10 text-center container pt-[86px]">
-        <small class="top-title">{subHeaderPost.frontmatter.topTitle}</small>
-        <h1 class="title">{subHeaderPost.frontmatter.name},</h1>
-        <h2 class="subtitle">{subHeaderPost.frontmatter.subtitle}</h2>
+        <small class="top-title">{topTitle}</small>
+        <h1 class="title">{iAm},</h1>
+        <AnimatedTitle 
+          words={words} />
         <div class="text-3xl leading-12">
-            <Content />
+            <slot />
         </div>
         <div class="languages flex items-center justify-center gap-12 py-4">
             <Language name="Java">
@@ -36,7 +52,7 @@ import ScrollDown from '../shared/scroll-down/ScrollDown.astro';
           </Language>
         </div>
         <div class="call-to-action flex items-center gap-8 ">
-          <Button text="Mon CV" href="#cv" variant="secondary" />
+          <Button text={myCv} href="#cv" variant="secondary" />
           <Button text="Contact" href="/contact" />
           <div class="divider"></div>
           <a href="/cv"><Github class="icon-media" /></a>

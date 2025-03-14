@@ -1,0 +1,81 @@
+---
+interface Props {
+    words: string[];
+    typeSpeed?: number;
+    deleteSpeed?: number;
+    delayBetweenWords?: number;
+    tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}
+
+const {
+    words = ["Default", "Words", "Here"],
+    typeSpeed = 100,
+    deleteSpeed = 50,
+    delayBetweenWords = 2000,
+    tag = 'h2'
+} = Astro.props;
+
+const Element = tag;
+---
+
+<Element class="type-wrapper flex items-center">
+    <span class="typed-text"></span>
+    <span class="cursor">&nbsp;</span>
+</Element>
+
+<style>
+    .type-wrapper {
+        display: inline-block;
+    }
+    .typed-text {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+    .cursor {
+        display: inline-block;
+        width: 3px;
+        font-size: 2.5rem;
+        background-color: #000;
+        animation: blink 1s infinite;
+    }
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+
+<script define:vars={{ words, typeSpeed, deleteSpeed, delayBetweenWords }}>
+    console.log({ words, typeSpeed, deleteSpeed, delayBetweenWords });
+    const typedTextElement = document.querySelector('.typed-text');
+    let wordIndex = 0;
+
+    async function typeWord(word) {
+        for (let char of word) {
+            if (!typedTextElement) return;
+            typedTextElement.textContent += char;
+            await new Promise(resolve => setTimeout(resolve, typeSpeed));
+        }
+    }
+
+    async function deleteWord() {
+        const word = typedTextElement?.textContent || '';
+        for (let i = word.length; i > 0; i--) {
+            if (!typedTextElement) return;
+            typedTextElement.textContent = word.substring(0, i - 1);
+            await new Promise(resolve => setTimeout(resolve, deleteSpeed));
+        }
+    }
+
+    async function animate() {
+        while (true) {
+            await typeWord(words[wordIndex]);
+            await new Promise(resolve => setTimeout(resolve, delayBetweenWords));
+            await deleteWord();
+            
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+    }
+
+    animate();
+</script>

@@ -1,8 +1,12 @@
 ---
+import * as subHeaderPost from '../content/home/subheader.md';
 import SubHeader from '../components/home/SubHeader.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from "../components/Header.astro";
 import MainHome from '../components/home/MainHome.astro';
+
+const SubheaderContent = subHeaderPost.Content;
+const SubheaderData = subHeaderPost.frontmatter;
 
 // SubHeader to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -10,6 +14,12 @@ import MainHome from '../components/home/MainHome.astro';
 
 <Layout>
 	<Header />
-	<SubHeader />
+	<SubHeader 
+		topTitle={SubheaderData.topTitle}
+		iAm={SubheaderData.iAm}
+		words={SubheaderData.words}
+		myCv={SubheaderData.myCv} >
+			<SubheaderContent/>
+	</SubHeader>
 	<MainHome />
 </Layout>
