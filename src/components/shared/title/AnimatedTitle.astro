@@ -19,22 +19,21 @@ const Element = tag;
 ---
 
 <Element class="type-wrapper flex items-center">
-    <span class="typed-text"></span>
-    <span class="cursor">&nbsp;</span>
+    <span class="typed-text lg:text-6xl text-4xl"></span>
+    <span class="cursor text-4xl">&nbsp;</span>
 </Element>
 
-<style>
+<style lang="scss">
     .type-wrapper {
         display: inline-block;
     }
     .typed-text {
-        font-size: 4rem;
+        //font-size: 4rem;
         font-weight: 700;
     }
     .cursor {
         display: inline-block;
         width: 3px;
-        font-size: 2.5rem;
         background-color: #000;
         animation: blink 1s infinite;
     }

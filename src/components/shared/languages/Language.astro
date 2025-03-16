@@ -6,7 +6,7 @@ const { name } = Astro.props
     <div class="language-icon">
         <slot />
     </div>
-    <span class="text-xs language-text">{name}</span>
+    <span class="text-xs language-text hidden md:inline-block">{name}</span>
 </div>
 
 <style lang="scss">

@@ -4,6 +4,8 @@ import Github from '../assets/icons/github.svg';
 import Gitlab from '../assets/icons/gitlab.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
 ---
+
+
 <style lang="scss">
     header {
       position: absolute;
@@ -14,21 +16,51 @@ import Linkedin from '../assets/icons/linkedin.svg';
     }
     .logo img {
       width: 300px;
+      @media (max-width: 768px) {
+        width: 200px;
+      }
     }
 
     nav ul li {
       font-family: 'Open Sans', sans-serif;
-      font-weight: 600
+      font-weight: 600;
     }
 
+    .burger-menu {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+
+    .desktop-menu {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .mobile-menu {
+      @media (min-width: 769px) {
+        display: none;
+      }
+    }
 </style>
+
 <header>
     <div class="flex px-16 py-6 justify-between items-center">
         <a href="/" class="logo">
             <img src={logo.src} alt="Jonathan Mourier's logo"/>
         </a>
 
-        <nav>
+        <!-- Burger Menu Button -->
+        <button id="burger-menu" class="burger-menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+            </svg>
+        </button>
+
+        <!-- Desktop Menu -->
+        <nav class="desktop-menu">
             <ul class="flex flex-end uppercase font-semibold text-md gap-7">
                 <li><a href="/">Qui suis-je</a></li>
                 <li><a href="/blog">Mon blog</a></li>
@@ -38,5 +70,41 @@ import Linkedin from '../assets/icons/linkedin.svg';
                 <li><a href="/cv"><Linkedin /></a></li>
             </ul>
         </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <nav id="mobile-menu" class="mobile-menu hidden absolute top-20 left-0 w-full bg-white shadow-lg">
+            <ul class="flex flex-col uppercase font-semibold text-md p-4 gap-4">
+                <li class="py-2"><a href="/">Qui suis-je</a></li>
+                <li class="py-2"><a href="/blog">Mon blog</a></li>
+                <li class="py-2"><a href="/contact">Contact</a></li>
+                <li class="py-2"><a href="/contact">Mon CV</a></li>
+                <li class="py-2">
+                  <div class="flex items-center justify-between p-4 gap-2">
+                    <a href="/cv"><Github /></a>
+                    <a href="/cv"><Gitlab /></a>
+                    <a href="/cv"><Linkedin /></a>
+                  </div>
+                </li>
+            </ul>
+        </nav>
     </div>
 </header>
+
+<script>
+
+  const burgerMenu = document.getElementById('burger-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (burgerMenu && mobileMenu) {
+    burgerMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !burgerMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+</script>

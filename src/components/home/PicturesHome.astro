@@ -1,0 +1,67 @@
+---
+import Polaroid from '../shared/picture/Polaroid.astro';
+
+interface Props {
+    data: MD;
+}
+
+interface Picture {
+    imageUrl: string;
+    year: string;
+    description: string;
+}
+
+const {
+    data
+} = Astro.props;
+
+const {
+    pictures,
+} = data.frontmatter;
+---
+
+<div id="pictures-home" class="container my-30">
+    <div class="flex justify-center flex-wrap">
+        {pictures.map((picture: Picture, index: number) => (
+            <div class="sm:-mx-8 px-2">
+                <Polaroid
+                    right={index % 2 !== 0} 
+                    imageUrl={picture.imageUrl} 
+                    year={picture.year}
+                    description={picture.description} />
+            </div>
+        ))}
+    </div>
+</div>
+
+<style lang="scss">
+    #pictures-home {
+        overflow-x: hidden;
+        //overflow-y: visible;
+    }
+</style>
+
+<script>
+    function animatePicture(element: HTMLElement) {
+        const polaroids = element.getElementsByClassName('polaroid');
+
+        for (let i = 0; i < polaroids.length; i++) {
+            const polaroid = polaroids[i] as HTMLElement;
+            console.log(polaroid);
+            polaroid.classList.add('animate');
+            polaroid.style.animationDelay = `${i * 0.5}s`;
+        }
+    }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animatePicture(entry.target as HTMLElement);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2 // Starts animation when 10% of the element is visible
+    });
+
+    observer.observe(document.getElementById('pictures-home') as Element);
+</script>

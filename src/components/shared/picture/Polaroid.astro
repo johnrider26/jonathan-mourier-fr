@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+interface Props {
+    imageUrl: string;
+    description: string;
+    year: string;
+    right?: boolean;
+}
+
+const { imageUrl, description, year, right } = Astro.props;
+---
+
+<figure class:list={["polaroid", right ? 'right' : '']}>
+    <div class="image-container">
+        <Image src={imageUrl} alt={description} width={288} height={288} />
+    </div>
+    <figcaption class="caption flex items-center pt-4">
+        <span class="year">{year}</span>
+        <span>{description}</span>
+    </figcaption>
+</div>
+
+<style lang="scss">
+    .polaroid {
+        background: white;
+        padding: 1rem;
+        padding-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 1rem;
+        transition: all 0.3s ease;
+        opacity: 0;
+
+        &:not(.right) {
+            transform: rotate(18deg);
+        }
+
+        &.right {
+            transform: rotate(-18deg);
+        }
+
+        &.animate {
+            &:not(.right) {
+                animation: dropInLeft 1s ease-out forwards;
+            }
+            &.right {
+                animation: dropInRight 1s ease-out forwards;
+            }
+        }
+
+        .image-container {
+            margin-bottom: 0.5rem;
+            width: 288px;
+            height: 288px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .caption {
+            text-align: center;
+            font-family: var(--open-sans-condensed);
+            color: #333;
+            font-size: 0.8rem;
+            line-height: 0.8rem;
+
+            .year {
+                font-size: 1.2rem;
+                font-weight: 900;
+                font-style: italic;
+                margin-right: 0.5rem;
+                color: #9747FF;
+            }
+        }
+
+
+    }
+
+
+
+    @keyframes dropInLeft {
+        0% {
+            opacity: 0;
+            transform: translateY(-100px) rotate(18deg);
+        }
+        70% {
+            transform: translateY(10px) rotate(18deg);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) rotate(18deg);
+        }
+    }
+
+    @keyframes dropInRight {
+        0% {
+            opacity: 0;
+            transform: translateY(-100px) rotate(-18deg);
+        }
+        70% {
+            transform: translateY(10px) rotate(-18deg);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) rotate(-18deg);
+        }
+    }
+
+
+    .polaroid:hover {
+        transform: rotate(0deg) scale(1.05);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+</style>

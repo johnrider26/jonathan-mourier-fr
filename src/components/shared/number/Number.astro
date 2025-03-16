@@ -45,39 +45,3 @@ const { number, text = '', duration = 1000, suffixe = '' } = Astro.props;
         font-family: var(--open-sans-condensed);
     }
 </style>
-
-<script>
-    function animateNumber(element: HTMLElement) {
-        const target = parseInt(element.dataset.target || '0');
-        const duration = parseInt(element.closest('.number-container')?.dataset.duration || '1000');
-        const steps = 60;
-        const increment = target / steps;
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target.toString();
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current).toString();
-            }
-        }, duration / steps);
-    }
-
-    // Animate when element becomes visible
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateNumber(entry.target as HTMLElement);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1 // Starts animation when 10% of the element is visible
-    });
-
-    document.querySelectorAll('.number').forEach(number => {
-        observer.observe(number);
-    });
-</script>
