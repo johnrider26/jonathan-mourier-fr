@@ -20,7 +20,7 @@ const {
 } = data.frontmatter;
 ---
 
-<div id="pictures-home" class="container my-30">
+<div id="pictures-home" class="container py-30">
     <div class="flex justify-center flex-wrap">
         {pictures.map((picture: Picture, index: number) => (
             <div class="sm:-mx-8 px-2">
@@ -36,7 +36,10 @@ const {
 
 <style lang="scss">
     #pictures-home {
-        overflow-x: hidden;
+        @media (max-width: 768px) {
+            overflow-x: hidden;
+        }
+        //
         //overflow-y: visible;
     }
 </style>
