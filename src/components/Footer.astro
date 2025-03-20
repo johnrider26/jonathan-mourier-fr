@@ -1,0 +1,79 @@
+---
+import AstroLogo from '../assets/icons/astro.svg';
+import EuropeLogo from '../assets/icons/europe.svg';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const year = new Date().getFullYear();
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+---
+
+<footer class="px-16 py-6 mt-30 text-sm flex justify-between items-center">
+    <ul class="footer-list flex items-center gap-8 text-sm">
+        <li>
+          &copy; {year} Jonathan Mourier
+        </li>
+        <li>
+          <div class="flex items-center gap-2 w-full">
+            <div>
+              {t('footer.made-with')} Astro
+            </div>
+            <AstroLogo class="astro-logo" />
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center gap-2 w-full">
+            <div>
+              {t('footer.hosted-by')} Scaleway
+            </div>
+            <EuropeLogo class="eu-logo" />
+          </div>  
+        </li>
+      </ul>
+      <ul class="footer-list flex items-center gap-8 ml-auto">
+        <li class="ml-auto">
+          <a href="">{t('footer.legals')}</a>
+        </li>
+        <li>
+          <a href="">{t('footer.privacy-policy')}</a>
+        </li>
+        <li>
+          <a href="">{t('footer.sitemap')}</a>
+        </li>
+    </ul>
+</footer>
+
+<style lang="scss">
+  .astro-logo {
+    width: 18px;
+    height: 18px;
+  }
+
+  .eu-logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer-list {
+    // add round separator between list items
+    li {
+      position: relative;
+      &:not(:first-child) {
+        &::after {
+          content: '';
+          display: block;
+          width: 8px;
+          height: 8px;
+          background: var(--color-primary);
+          border-radius: 100%;
+          position:absolute;
+          left: -20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+</style>

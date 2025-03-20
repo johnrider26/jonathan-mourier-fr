@@ -1,5 +1,10 @@
 ---
 import AxopenLogo from '../../../assets/icons/axopen.svg';
+import LinkIcon from '../../../assets/icons/link.svg';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface Props {
     title: string;
@@ -20,14 +25,20 @@ const {
 
 <article class="blog-card">
     <div class="blog-card-container flex flex-col justify-between mb-20">
-        <h3 class="blog-card-header">
+        <h3 class="blog-card-header text-4xl font-semibold">
             {title}
         </h3>
         <div class="blog-card-body">
             <p>{excerpt}</p>
         </div>
         <div class="blog-card-footer flex justify-between items-center">
-            <a href={url} target="_blank" rel="noopener noreferrer">Read more</a>
+            <a href={url} target="_blank" rel="noopener noreferrer" class="font-bold">
+                <div class="flex items-center">
+                    <span class="mr-2">{t('blog.read')}</span>
+                    <LinkIcon />
+                </div>
+                
+            </a>
             <div class="blog-card-source">
                 {source === 'Axopen' && <AxopenLogo />}
                 {source !== 'Axopen' && <span>{source}</span>}

@@ -1,7 +1,7 @@
 ---
 topTitle: 'Hey, bienvenue sur mon site ! 🌟'
 iAm: 'Je suis Jonathan Mourier'
-words: ['Analyste Développeur', 'Chef de projets', 'Rider']
+words: ['Analyste Développeur', 'Chef de projets', 'BMX Rider']
 myCv: 'Mon CV'
 ---
 

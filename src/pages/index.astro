@@ -6,6 +6,7 @@ import * as blogHomePost from '../content/home/bloghome.md';
 import SubHeader from '../components/home/SubHeader.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import MainHome from '../components/home/MainHome.astro';
 import PicturesHome from '../components/home/PicturesHome.astro';
 import BlogHome from '../components/home/BlogHome.astro';
@@ -18,4 +19,5 @@ import BlogHome from '../components/home/BlogHome.astro';
 	<MainHome data={mainHomePost} />
 	<PicturesHome data={picturesHomePost} />
 	<BlogHome data={blogHomePost} />
+	<Footer />
 </Layout>

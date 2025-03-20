@@ -3,6 +3,12 @@ import logo from '../assets/logo.png';
 import Github from '../assets/icons/github.svg';
 import Gitlab from '../assets/icons/gitlab.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+
 ---
 
 
@@ -62,22 +68,27 @@ import Linkedin from '../assets/icons/linkedin.svg';
         <!-- Desktop Menu -->
         <nav class="desktop-menu">
             <ul class="flex flex-end uppercase font-semibold text-md gap-7">
-                <li><a href="/">Qui suis-je</a></li>
-                <li><a href="/blog">Mon blog</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/">{t('nav.who-i-am')}</a></li>
+                <li><a href="/blog">{t('nav.blog')}</a></li>
+                <li><a href="/contact">{t('nav.contact')}</a></li>
                 <li><a href="/cv"><Github /></a></li>
                 <li><a href="/cv"><Gitlab /></a></li>
                 <li><a href="/cv"><Linkedin /></a></li>
+                <li>
+                  <select id="language-switcher" class="bg-transparent border-none text-md uppercase font-semibold">
+                    <option value="en" selected={lang === 'en'}>EN</option>
+                    <option value="fr" selected={lang === 'fr'}>FR</option>
+                  </select>
+                </li>
             </ul>
         </nav>
 
         <!-- Mobile Menu (Hidden by default) -->
         <nav id="mobile-menu" class="mobile-menu hidden absolute top-20 left-0 w-full bg-white shadow-lg">
             <ul class="flex flex-col uppercase font-semibold text-md p-4 gap-4">
-                <li class="py-2"><a href="/">Qui suis-je</a></li>
-                <li class="py-2"><a href="/blog">Mon blog</a></li>
-                <li class="py-2"><a href="/contact">Contact</a></li>
-                <li class="py-2"><a href="/contact">Mon CV</a></li>
+                <li class="py-2"><a href="/">{t('nav.who-i-am')}</a></li>
+                <li class="py-2"><a href="/blog">{t('nav.blog')}</a></li>
+                <li class="py-2"><a href="/contact">{t('nav.contact')}</a></li>
                 <li class="py-2">
                   <div class="flex items-center justify-between p-4 gap-2">
                     <a href="/cv"><Github /></a>
@@ -107,4 +118,16 @@ import Linkedin from '../assets/icons/linkedin.svg';
       }
     });
   }
+
+  const languageSwitcher = document.getElementById('language-switcher');
+  
+  if (!languageSwitcher) {
+    throw new Error('Language switcher not found');
+  }
+  languageSwitcher.addEventListener('change', (event) => {
+    const selectedLang = event.target.value;
+    const currentUrl = new URL(window.location.href);
+    currentUrl.pathname = `/${selectedLang}${currentUrl.pathname.substring(3)}`;
+    window.location.href = currentUrl.toString();
+  });
 </script>
