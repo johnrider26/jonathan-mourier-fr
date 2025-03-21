@@ -1,6 +1,13 @@
 ---
 import BlogCard from '../shared/blog/BlogCard.astro';
 import Title from '../shared/title/Title.astro';
+import Button from '../shared/button/Button.astro';
+import ArrowRight from '../../assets/icons/arrow-right.svg';
+import {getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface Props {
     data: MD;
@@ -25,7 +32,7 @@ const Content = data.Content;
             <Content />
         </div>
     </div>
-    <div class="container relative h-[320px] mt-8">
+    <div class="container relative h-[320px] mt-8 overflow-x-auto scrollbar-hide">
         <div class="blog-container flex gap-8">
             <BlogCard 
                 title="How to create a blog with Astro"
@@ -48,12 +55,28 @@ const Content = data.Content;
                 source="Axopen"
                 url="https://axopen.com/blog/how-to-create-a-blog-with-astro" />
         </div>
-
+    </div>
+    <div class="container flex justify-end mt-10">
+        <a href="/blog">
+            <div class="flex items-center gap-1">
+                <span>
+                    {t('blog.see-more')}
+                </span>
+                <ArrowRight />
+            </div>
+        </a>
     </div>
 </div>
 
 <style lang="scss">
     .blog-container {
         position: absolute;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+        scrollbar-width: none; /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none; /* WebKit */
     }
 </style>

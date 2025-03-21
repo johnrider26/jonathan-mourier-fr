@@ -75,7 +75,8 @@ const t = useTranslations(lang);
                 <li><a href="/blog">{t('nav.blog')}</a></li>
                 <li><a href="/contact">{t('nav.contact')}</a></li>
                 <li>
-                  <button id="language-switcher" value={lang === 'en' ? '' : 'en'} class="cursor-pointer w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl">
+                  <button id="language-switcher" value={lang === 'en' ? '' : 'en'}
+                  class=" w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl">
                     <span class="text-sm">
                         {lang === 'en' ? 'FR' : 'EN'}
                     </span>
