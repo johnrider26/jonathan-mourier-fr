@@ -3,6 +3,9 @@ import logo from '../assets/logo.png';
 import Github from '../assets/icons/github.svg';
 import Gitlab from '../assets/icons/gitlab.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
+import { Image } from 'astro:assets';
+import frenchFlag from '../assets/flags/camembert-flag.svg';
+import englishFlag from '../assets/flags/rossbeef-flag.png';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -67,18 +70,16 @@ const t = useTranslations(lang);
 
         <!-- Desktop Menu -->
         <nav class="desktop-menu">
-            <ul class="flex flex-end uppercase font-semibold text-md gap-7">
+            <ul class="flex flex-end items-center uppercase font-semibold text-md gap-7">
                 <li><a href="/">{t('nav.who-i-am')}</a></li>
                 <li><a href="/blog">{t('nav.blog')}</a></li>
                 <li><a href="/contact">{t('nav.contact')}</a></li>
-                <li><a href="/cv"><Github /></a></li>
-                <li><a href="/cv"><Gitlab /></a></li>
-                <li><a href="/cv"><Linkedin /></a></li>
                 <li>
-                  <select id="language-switcher" class="bg-transparent border-none text-md uppercase font-semibold">
-                    <option value="en" selected={lang === 'en'}>EN</option>
-                    <option value="fr" selected={lang === 'fr'}>FR</option>
-                  </select>
+                  <button id="language-switcher" value={lang === 'en' ? '' : 'en'} class="cursor-pointer w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl">
+                    <span class="text-sm">
+                        {lang === 'en' ? 'FR' : 'EN'}
+                    </span>
+                  </button>
                 </li>
             </ul>
         </nav>
@@ -124,8 +125,9 @@ const t = useTranslations(lang);
   if (!languageSwitcher) {
     throw new Error('Language switcher not found');
   }
-  languageSwitcher.addEventListener('change', (event) => {
-    const selectedLang = event.target.value;
+  languageSwitcher.addEventListener('click', (event) => {
+    const selectedLang = languageSwitcher.value;
+
     const currentUrl = new URL(window.location.href);
     currentUrl.pathname = `/${selectedLang}${currentUrl.pathname.substring(3)}`;
     window.location.href = currentUrl.toString();
