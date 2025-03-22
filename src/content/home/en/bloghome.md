@@ -2,4 +2,4 @@
 blog: "My blog"
 ---
 
-Here are the frameworks, libraries, services and runtimes I have experience with. This is not a complete list!  I'm constantly gaining new skills, and hence it can be a little bit outdated.
+Discover my thoughts, ideas, and experiences through the articles I have written. (but in french sorry eheh)

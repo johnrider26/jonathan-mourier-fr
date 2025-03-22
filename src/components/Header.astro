@@ -3,57 +3,11 @@ import logo from '../assets/logo.png';
 import Github from '../assets/icons/github.svg';
 import Gitlab from '../assets/icons/gitlab.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
-import { Image } from 'astro:assets';
-import frenchFlag from '../assets/flags/camembert-flag.svg';
-import englishFlag from '../assets/flags/rossbeef-flag.png';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-
 ---
-
-
-<style lang="scss">
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 3;
-    }
-    .logo img {
-      width: 300px;
-      @media (max-width: 997px) {
-        width: 200px;
-      }
-    }
-
-    nav ul li {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 600;
-    }
-
-    .burger-menu {
-      display: none;
-      @media (max-width: 997px) {
-        display: block;
-      }
-    }
-
-    .desktop-menu {
-      @media (max-width: 997px) {
-        display: none;
-      }
-    }
-
-    .mobile-menu {
-      @media (min-width: 798px) {
-        display: none;
-      }
-    }
-</style>
 
 <header>
     <div class="flex px-16 py-6 justify-between items-center">
@@ -73,10 +27,9 @@ const t = useTranslations(lang);
             <ul class="flex flex-end items-center uppercase font-semibold text-md gap-7">
                 <li><a href="/">{t('nav.who-i-am')}</a></li>
                 <li><a href="/blog">{t('nav.blog')}</a></li>
-                <li><a href="/contact">{t('nav.contact')}</a></li>
                 <li>
                   <button id="language-switcher" value={lang === 'en' ? '' : 'en'}
-                  class=" w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl">
+                  class=" w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl cursor-pointer">
                     <span class="text-sm">
                         {lang === 'en' ? 'FR' : 'EN'}
                     </span>
@@ -90,7 +43,6 @@ const t = useTranslations(lang);
             <ul class="flex flex-col uppercase font-semibold text-md p-4 gap-4">
                 <li class="py-2"><a href="/">{t('nav.who-i-am')}</a></li>
                 <li class="py-2"><a href="/blog">{t('nav.blog')}</a></li>
-                <li class="py-2"><a href="/contact">{t('nav.contact')}</a></li>
                 <li class="py-2">
                   <div class="flex items-center justify-between p-4 gap-2">
                     <a href="/cv"><Github /></a>
@@ -102,6 +54,46 @@ const t = useTranslations(lang);
         </nav>
     </div>
 </header>
+
+<style lang="scss">
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+  .logo img {
+    width: 300px;
+    @media (max-width: 997px) {
+      width: 200px;
+    }
+  }
+
+  nav ul li {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+  }
+
+  .burger-menu {
+    display: none;
+    @media (max-width: 997px) {
+      display: block;
+    }
+  }
+
+  .desktop-menu {
+    @media (max-width: 997px) {
+      display: none;
+    }
+  }
+
+  .mobile-menu {
+    @media (min-width: 798px) {
+      display: none;
+    }
+  }
+</style>
 
 <script>
 
@@ -130,7 +122,7 @@ const t = useTranslations(lang);
     const selectedLang = languageSwitcher.value;
 
     const currentUrl = new URL(window.location.href);
-    currentUrl.pathname = `/${selectedLang}${currentUrl.pathname.substring(3)}`;
+    currentUrl.pathname = `/${selectedLang}${currentUrl.pathname.split('/')[2] ?? currentUrl.pathname}`;
     window.location.href = currentUrl.toString();
   });
 </script>

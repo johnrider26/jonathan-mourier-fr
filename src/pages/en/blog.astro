@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import BlogSubHeader from '../../components/blog/BlogSubHeader.astro';
+import * as blogSubHeaderPost from '../../content/blogPage/en/blogSubheader.md';
+
+---
+
+<Layout>
+	<Header />
+	<BlogSubHeader data={blogSubHeaderPost} />
+	<Footer />
+</Layout>
+

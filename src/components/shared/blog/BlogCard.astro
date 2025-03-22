@@ -29,7 +29,7 @@ const {
             {title}
         </h3>
         <div class="blog-card-body">
-            <p>{excerpt}</p>
+            <p>{excerpt.length > 115 ? `${excerpt.slice(0, 115)}...` : excerpt}</p>
         </div>
         <div class="blog-card-footer flex justify-between items-center">
             <a href={url} target="_blank" rel="noopener noreferrer" class="font-bold">

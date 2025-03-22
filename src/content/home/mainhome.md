@@ -1,13 +1,16 @@
 ---
-whoIam: "Qui-suis-je ?"
+whoIam: "Qui suis-je ?"
 years: "Ans"
-xpYears: "Ans d'xp"
-coffeeLiter: "Litres de cafés ingérés"
+xpYears: "Années d'expérience"
+coffeeLiter: "Litres de café consommés"
 bmxYears: "Années de BMX"
 ---
 
-Lorem ipsum dolor sit amet. Non laudantium consequuntur est explicabo molestias sed amet voluptatem non molestias voluptas. A facilis vero qui unde libero ad doloribus laborum in sequi sequi quo eveniet minima.
+Passionné par l’informatique depuis mon plus jeune âge, j’ai découvert le développement au lycée et débuté ma carrière en tant que développeur web après un DUT Informatique et une licence professionnelle Métiers de l'Informatique.
 
-Ex magnam aperiam eum blanditiis impedit non unde voluptatum At amet eaque ad facere blanditiis qui accusamus internos. Aut velit quia ut pariatur enim non amet placeat.
+Développeur fullstack expérimenté avec 5 ans d’expertise chez AXOPEN, je travaille principalement sur le développement et la maintenance d’un socle applicatif en Spring Boot / Angular, intégrant des fonctionnalités avancées et respectant des standards de qualité élevés.
 
-Et nulla ipsam aut exercitationem dolor qui nihil aperiam hic veritatis incidunt et possimus neque ea dolor ipsa. Et placeat impedit est quos ipsa et ipsa nostrum quo molestiae repudiandae est quaerat laboriosam et quae deleniti sit quis porro.
+Au fil des années, j’ai élargi mes compétences et suis devenu chef de projet chez AXOPEN, où je pilote la maintenance et l’évolution de solutions informatiques, alliant expertise technique et gestion de projet.
+
+En parallèle de ma vie professionnelle, je suis un passionné de sport. Que ce soit le BMX, la course à pied ou le ski, j'aime les sports en plein air et à sensations !
+

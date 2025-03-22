@@ -6,8 +6,10 @@ coffeeLiter: "Liters of coffee consumed"
 bmxYears: "Years of BMX"
 ---
 
-Lorem ipsum dolor sit amet. Non laudantium consequuntur est explicabo molestias sed amet voluptatem non molestias voluptas. A facilis vero qui unde libero ad doloribus laborum in sequi sequi quo eveniet minima.
+Passionate about IT from a young age, I discovered development in high school and began my career as a web developer after earning a DUT (University Technology Diploma) in Computer Science and a professional degree in IT.
 
-Ex magnam aperiam eum blanditiis impedit non unde voluptatum At amet eaque ad facere blanditiis qui accusamus internos. Aut velit quia ut pariatur enim non amet placeat.
+As an experienced full-stack developer with 5 years of experience at AXOPEN, I work primarily on the development and maintenance of a Spring Boot/Angular application platform, integrating advanced features and adhering to high quality standards.
 
-Et nulla ipsam aut exercitationem dolor qui nihil aperiam hic veritatis incidunt et possimus neque ea dolor ipsa. Et placeat impedit est quos ipsa et ipsa nostrum quo molestiae repudiandae est quaerat laboriosam et quae deleniti sit quis porro.
+Over the years, I broadened my skills and became a project manager at AXOPEN, where I oversee the maintenance and development of IT solutions, combining technical expertise and project management.
+
+Alongside my professional life, I'm passionate about sports. Whether it's BMX, running, or skiing, I love outdoor and adrenaline sports!

@@ -4,6 +4,17 @@ import Title from '../shared/title/Title.astro';
 import Button from '../shared/button/Button.astro';
 import ArrowRight from '../../assets/icons/arrow-right.svg';
 import {getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+
+interface Article {
+    data: {
+        title: string;
+        except: string;
+        source: 'Axopen' | 'Dev.to' | 'Medium';
+        url: string;
+    }
+}
 
 
 const lang = getLangFromUrl(Astro.url);
@@ -23,6 +34,8 @@ const {
 
 const Content = data.Content;
 
+const articles: Article[] = (await getCollection('blog')).slice(0, 4);
+
 
 ---
 <div id="blog-home" class="pb-40 overflow-x-hidden">
@@ -34,26 +47,14 @@ const Content = data.Content;
     </div>
     <div class="container relative h-[320px] mt-8 overflow-x-auto scrollbar-hide">
         <div class="blog-container flex gap-8">
-            <BlogCard 
-                title="How to create a blog with Astro"
-                excerpt="Astro is a new static site generator that is fast and easy to use. In this article, we will see how to create a blog with Astro."
-                source="Axopen"
-                url="https://axopen.com/blog/how-to-create-a-blog-with-astro" />
-            <BlogCard 
-                title="How to create a blog with Astro"
-                excerpt="Astro is a new static site generator that is fast and easy to use. In this article, we will see how to create a blog with Astro."
-                source="Axopen"
-                url="https://axopen.com/blog/how-to-create-a-blog-with-astro" />
-            <BlogCard 
-                title="How to create a blog with Astro"
-                excerpt="Astro is a new static site generator that is fast and easy to use. In this article, we will see how to create a blog with Astro."
-                source="Axopen"
-                url="https://axopen.com/blog/how-to-create-a-blog-with-astro" />
-            <BlogCard 
-                title="How to create a blog with Astro"
-                excerpt="Astro is a new static site generator that is fast and easy to use. In this article, we will see how to create a blog with Astro."
-                source="Axopen"
-                url="https://axopen.com/blog/how-to-create-a-blog-with-astro" />
+            {articles.map(article => (
+                <BlogCard 
+                    title={article.data.title} 
+                    excerpt={article.data.except} 
+                    source={article.data.source}
+                    url={article.data.url}
+                />
+            ))}
         </div>
     </div>
     <div class="container flex justify-end mt-10">
