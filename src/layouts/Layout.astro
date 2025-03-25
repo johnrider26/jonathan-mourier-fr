@@ -1,6 +1,8 @@
 ---
-import "../styles/global.css";
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import "@style/global.css";
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -18,7 +20,9 @@ const t = useTranslations(lang);
 		<title>Jonathan Mourier | {t('html.title')}</title>
 	</head>
 	<body>
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 

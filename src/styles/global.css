@@ -20,7 +20,7 @@ body {
 #subheader {
     position: relative;
     min-height: 100vh;
-    background: url("../assets/bg.png") lightgray 50% / cover no-repeat;
+    background: url("@assets/bg.png") lightgray 50% / cover no-repeat;
     z-index: 0;
     display: flex;
 }

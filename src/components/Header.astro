@@ -1,9 +1,9 @@
 ---
-import logo from '../assets/logo.png';
-import Github from '../assets/icons/github.svg';
-import Gitlab from '../assets/icons/gitlab.svg';
-import Linkedin from '../assets/icons/linkedin.svg';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import logo from '@assets/logo.png';
+import Github from '@assets/icons/github.svg';
+import Gitlab from '@assets/icons/gitlab.svg';
+import Linkedin from '@assets/icons/linkedin.svg';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);

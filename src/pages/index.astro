@@ -1,23 +1,19 @@
 ---
-import * as subHeaderPost from '../content/home/subheader.md';
-import * as mainHomePost from '../content/home/mainhome.md';
-import * as picturesHomePost from '../content/home/pictureshome.md';
-import * as blogHomePost from '../content/home/bloghome.md';
-import SubHeader from '../components/home/SubHeader.astro';
-import Layout from '../layouts/Layout.astro';
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import MainHome from '../components/home/MainHome.astro';
-import PicturesHome from '../components/home/PicturesHome.astro';
-import BlogHome from '../components/home/BlogHome.astro';
+import * as subHeaderPost from '@contents/home/subheader.md';
+import * as mainHomePost from '@contents/home/mainhome.md';
+import * as picturesHomePost from '@contents/home/pictureshome.md';
+import * as blogHomePost from '@contents/home/bloghome.md';
+import SubHeader from '@components/home/SubHeader.astro';
+import Layout from '@layouts/Layout.astro';
+import MainHome from '@components/home/MainHome.astro';
+import PicturesHome from '@components/home/PicturesHome.astro';
+import BlogHome from '@components/home/BlogHome.astro';
 
 ---
 
 <Layout>
-	<Header />
 	<SubHeader data={subHeaderPost} />
 	<MainHome data={mainHomePost} />
 	<PicturesHome data={picturesHomePost} />
 	<BlogHome data={blogHomePost} />
-	<Footer />
 </Layout>
