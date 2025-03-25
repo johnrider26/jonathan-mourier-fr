@@ -1,13 +1,16 @@
 ---
 import Title from '@components/shared/title/Title.astro';
 import Number from '@components/shared/number/Number.astro';
+import { useTranslations } from '@i18n/utils';
 
 interface Props {
     data: MD;
+    lang: string;
 }
 
 const {
-    data
+    data,
+    lang
 } = Astro.props;
 
 const {
@@ -17,6 +20,8 @@ const {
     coffeeLiter,
     bmxYears
 } = data.frontmatter;
+
+const t = useTranslations(lang as ('en' | 'fr'));
 
 const Content = data.Content;
 
@@ -38,7 +43,7 @@ const oneCoffeeLiter = 0.08;
 const liter = Math.floor((coffeesDay * oneCoffeeLiter) * xpDay);
 ---
 
-<div id="who-am-i" class="pt-10">
+<div id={t('anchor.who-i-am')} class="pt-10">
     <div class="container flex flex-col gap-16">
         <div class="flex items-center justify-between flex-wrap gap-4">
             <Title text={whoIam} tag="h2" />

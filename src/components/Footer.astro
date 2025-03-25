@@ -1,11 +1,13 @@
 ---
 import AstroLogo from '@assets/icons/astro.svg';
 import EuropeLogo from '@assets/icons/europe.svg';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { useTranslations } from '@i18n/utils';
+import { footerRoutes as routes } from '@i18n/ui';
 
 const year = new Date().getFullYear();
 
-const lang = getLangFromUrl(Astro.url);
+const { lang } = Astro.props;
+
 const t = useTranslations(lang);
 
 ---
@@ -33,15 +35,10 @@ const t = useTranslations(lang);
         </li>
       </ul>
       <ul class="footer-list flex items-center gap-8 ml-auto">
-        <li class="ml-auto">
-          <a href="" class="hover:underline">{t('footer.legals')}</a>
-        </li>
-        <li>
-          <a href="" class="hover:underline">{t('footer.privacy-policy')}</a>
-        </li>
-        <li>
-          <a href="" class="hover:underline">{t('footer.sitemap')}</a>
-        </li>
+        {routes && routes[lang]?.map((route, index) => (
+          <li class:list={[index === 0 ? 'ml-auto' : '']}><a href={route.href}>{route.label}</a></li>
+        ))
+        }
     </ul>
 </footer>
 

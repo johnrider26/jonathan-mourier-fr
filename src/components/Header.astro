@@ -3,10 +3,11 @@ import logo from '@assets/logo.png';
 import Github from '@assets/icons/github.svg';
 import Gitlab from '@assets/icons/gitlab.svg';
 import Linkedin from '@assets/icons/linkedin.svg';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { headerRoutes as routes } from '@i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+
+const { lang }  = Astro.props;
+
 ---
 
 <header>
@@ -25,8 +26,9 @@ const t = useTranslations(lang);
         <!-- Desktop Menu -->
         <nav class="desktop-menu">
             <ul class="flex flex-end items-center uppercase font-semibold text-md gap-7">
-                <li><a href="/">{t('nav.who-i-am')}</a></li>
-                <li><a href="/blog">{t('nav.blog')}</a></li>
+              {routes && routes[lang]?.map(route => (
+                <li><a href={route.href}>{route.label}</a></li>
+              ))}
                 <li>
                   <button id="language-switcher" value={lang === 'en' ? '' : 'en'}
                   class=" w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl cursor-pointer">
@@ -41,8 +43,9 @@ const t = useTranslations(lang);
         <!-- Mobile Menu (Hidden by default) -->
         <nav id="mobile-menu" class="mobile-menu hidden absolute top-20 left-0 w-full bg-white shadow-lg">
             <ul class="flex flex-col uppercase font-semibold text-md p-4 gap-4">
-                <li class="py-2"><a href="/">{t('nav.who-i-am')}</a></li>
-                <li class="py-2"><a href="/blog">{t('nav.blog')}</a></li>
+                {routes && routes[lang]?.map(route => (
+                  <li><a href={route.href}>{route.label}</a></li>
+                ))}
                 <li class="py-2">
                   <div class="flex items-center justify-between p-4 gap-2">
                     <a href="/cv"><Github /></a>

@@ -1,28 +1,37 @@
 ---
 import "@styles/global.css";
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import BaseHead from "@components/BaseHead.astro";
+
+// TYPES
+interface Props {
+	title: string;
+	description: string;
+	pageTitle?: string;
+	ogImage?: string;
+	locale: string;
+}
+
+// FUNCTIONS & ACTIONS
+// Get props, incl. locale
+const { title, description, pageTitle, ogImage, locale } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={locale}>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="alternate icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={t('html.description')}>
-		<meta name="author" content="Jonathan Mourier">
-		<title>Jonathan Mourier | {t('html.title')}</title>
+		<BaseHead 
+			title={title} 
+			description={description} 
+			pageTitle={pageTitle} 
+			ogImage={ogImage} 
+			locale={locale} />
 	</head>
 	<body>
-		<Header />
+		<Header lang={locale} />
 		<slot />
-		<Footer />
+		<Footer lang={locale} />
 	</body>
 </html>
 

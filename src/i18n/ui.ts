@@ -1,37 +1,74 @@
+import type { Multi, Link } from '@core/types';
+
 export const languages = {
     en: 'English',
     fr: 'Français',
-  };
-  
-  export const defaultLang = 'fr';
-  
-  export const ui = {
-    fr: {
-      'html.title': 'Analyste Développeur',
-      'html.description': 'Développeur web fullstack passionné par les technologies Web. Découvrez mes projets et mes articles sur mon blog.',
-      'nav.who-i-am': 'Qui suis-je',
-      'nav.blog': 'Mon blog',
+};
+
+export const defaultLang = 'fr';
+
+export const ui = {
+  fr: {
+    'html.title': 'Analyste Développeur',
+    'html.description': 'Développeur web fullstack passionné par les technologies Web. Découvrez mes projets et mes articles sur mon blog.',
+    'anchor.who-i-am': 'qui-suis-je',
+    'nav.who-i-am': 'Qui suis-je',
+    'nav.blog': 'Mon blog',
+    'nav.contact': 'Contact',
+    'blog.read': 'Voir l\'article',
+    'blog.see-more' : 'Voir plus',
+    'footer.made-with': 'Construit avec',
+    'footer.hosted-by': 'Hébergé par',
+    'footer.privacy-policy': 'Politique de confidentialité',
+    'footer.legals': 'Mentions légales',
+    'footer.sitemap': 'Plan du site',
+  },
+  en: {
+      'html.title': 'Fullstack Web Developer',
+      'html.description': 'Fullstack web developer passionate about Web technologies. Discover my projects and my articles on my blog.',
+      'anchor.who-i-am': 'who-i-am',
+      'nav.who-i-am': 'Who I am',
+      'nav.blog': 'My blog',
       'nav.contact': 'Contact',
-      'blog.read': 'Voir l\'article',
-      'blog.see-more' : 'Voir plus',
-      'footer.made-with': 'Construit avec',
-      'footer.hosted-by': 'Hébergé par',
-      'footer.privacy-policy': 'Politique de confidentialité',
-      'footer.legals': 'Mentions légales',
-      'footer.sitemap': 'Plan du site',
-    },
-    en: {
-        'html.title': 'Fullstack Web Developer',
-        'html.description': 'Fullstack web developer passionate about Web technologies. Discover my projects and my articles on my blog.',
-        'nav.who-i-am': 'Who I am',
-        'nav.blog': 'My blog',
-        'nav.contact': 'Contact',
-        'blog.read': 'Read more',
-        'blog.see-more' : 'See more',
-        'footer.made-with': 'Built with',
-        'footer.hosted-by': 'Hosted by',
-        'footer.privacy-policy': 'Privacy policy',
-        'footer.legals': 'Legals',
-        'footer.sitemap': 'Sitemap',
-    },
-  } as const;
+      'blog.read': 'Read more',
+      'blog.see-more' : 'See more',
+      'footer.made-with': 'Built with',
+      'footer.hosted-by': 'Hosted by',
+      'footer.privacy-policy': 'Privacy policy',
+      'footer.legals': 'Legals',
+      'footer.sitemap': 'Sitemap',
+  },
+} as const;
+
+
+export const headerRoutes: Record<string, Link[]> = {
+  fr: [
+    { href: '/#qui-suis-je', label: 'Qui suis-je' },
+    { href: '/blog', label: 'Mon blog' },
+    { href: '/contact', label: 'Contact' },
+  ],
+  en: [
+    { href: '/en/#who-i-am', label: 'Who I am' },
+    { href: '/en/blog', label: 'My blog' },
+    { href: '/en/contact', label: 'Contact' },
+  ],
+}
+
+export const footerRoutes: Record<string, Link[]> = {
+  fr: [
+    { href: '/mentions-legales', label: 'Mentions légales' },
+    { href: '/politique-de-confidentialite', label: 'Politique de confidentialité' },
+    { href: '/plan-du-site', label: 'Plan du site' },
+  ],
+  en: [
+    { href: '/en/legals', label: 'Legals' },
+    { href: '/en/privacy-policy', label: 'Privacy policy' },
+    { href: '/en/sitemap', label: 'Sitemap' },
+  ],
+}
+
+// Strings for OG spaces in header
+export const ogStrings: Multi = {
+  en: "en_GB",
+  fr: "fr_FR",
+}

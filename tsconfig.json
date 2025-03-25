@@ -1,6 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*.ts",
+    "src/**/*.astro",
+    "src/**/*.md",
+    "src/**/*.svg",
+    ],
   "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
@@ -17,6 +23,9 @@
       ],
       "@i18n/*": [
         "i18n/*"
+      ],
+      "@core/*": [
+        "core/*"
       ],
       "@layouts/*": [
         "layouts/*"
