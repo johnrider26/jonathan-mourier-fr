@@ -10,24 +10,29 @@ import Gitlab from '@assets/icons/gitlab.svg';
 import Linkedin from '@assets/icons/linkedin.svg';
 import ScrollDown from '@components/shared/scroll-down/ScrollDown.astro';
 import AnimatedTitle from '@components/shared/title/AnimatedTitle.astro';
+import {useTranslations} from '@i18n/utils'
+
 
 interface Props {
     data: MD;
+    lang: 'en' | 'fr';
 }
 
 const {
-    data
+    data,
+    lang
 } = Astro.props;
 
 const {
     topTitle,
     iAm,
     words,
-    myCv
+    myCv,
 } = data.frontmatter;
 
 const Content = data.Content;
 
+const t = useTranslations(lang);
 
 ---
 
@@ -64,7 +69,7 @@ const Content = data.Content;
           </div>
         </div>
         <div class="pt-8">
-          <ScrollDown scrollTo="who-am-i" />
+          <ScrollDown scrollTo={t('anchor.who-i-am')} />
         </div>
 </div>
 

@@ -30,16 +30,9 @@ const { title, description, pageTitle, ogImage, locale } = Astro.props;
 	</head>
 	<body>
 		<Header lang={locale} />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer lang={locale} />
 	</body>
 </html>
-
-<style lang="scss">
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
