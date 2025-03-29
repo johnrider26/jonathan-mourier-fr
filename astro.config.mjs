@@ -6,9 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
     site: "https://jonathanmourier.fr/",
-  vite: {
-    plugins: [tailwindcss()]
-  },
+    vite: {
+        plugins: [tailwindcss()]
+    },
     i18n: {
         locales: ["fr", "en"],
         defaultLocale: "fr",
@@ -22,5 +22,5 @@ export default defineConfig({
     },
     experimental: {
         svg: true,
-    },
+    }
 });

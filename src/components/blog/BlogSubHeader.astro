@@ -2,6 +2,7 @@
 import Title from '@components/shared/title/Title.astro';
 import { getCollection } from 'astro:content';
 import BlogCard from '@components/shared/blog/BlogCard.astro';
+import type { Article } from '@core/types';
 
 interface Props {
     data: MD;

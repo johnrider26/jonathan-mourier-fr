@@ -1,0 +1,21 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import * as contactSubHeaderPost from '@content/contact/contactSubheader.md';
+
+import ContactSubHeader from '@components/contact/ContactSubHeader.astro';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+---
+
+<Layout 
+	title={t('html.title')}
+	description={t('html.description')}
+	pageTitle={t('html.title')}
+	locale={lang}
+	>
+	<ContactSubHeader data={contactSubHeaderPost} locale={lang} />
+</Layout>

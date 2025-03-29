@@ -25,11 +25,11 @@ const {
 
 <article class="blog-card">
     <div class="blog-card-container flex flex-col justify-between mb-20">
-        <h3 class="blog-card-header text-4xl font-semibold">
+        <h3 class="blog-card-header text-3xl font-bold">
             {title}
         </h3>
         <div class="blog-card-body">
-            <p>{excerpt.length > 115 ? `${excerpt.slice(0, 115)}...` : excerpt}</p>
+            <p>{excerpt.length > 130 ? `${excerpt.slice(0, 130)}...` : excerpt}</p>
         </div>
         <div class="blog-card-footer flex justify-between items-center">
             <a href={url} target="_blank" rel="noopener noreferrer" class="font-bold">

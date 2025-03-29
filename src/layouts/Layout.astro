@@ -11,11 +11,12 @@ interface Props {
 	pageTitle?: string;
 	ogImage?: string;
 	locale: string;
+	mainClass?: string[];
 }
 
 // FUNCTIONS & ACTIONS
 // Get props, incl. locale
-const { title, description, pageTitle, ogImage, locale } = Astro.props;
+const { title, description, pageTitle, ogImage, locale, mainClass } = Astro.props;
 ---
 
 <!doctype html>
@@ -30,7 +31,8 @@ const { title, description, pageTitle, ogImage, locale } = Astro.props;
 	</head>
 	<body>
 		<Header lang={locale} />
-		<main>
+		<main class:list={mainClass}>
+			{/* Main content */}
 			<slot />
 		</main>
 		<Footer lang={locale} />
