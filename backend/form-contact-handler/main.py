@@ -5,6 +5,25 @@ from email.mime.multipart import MIMEMultipart
 import json
 
 def handler(event, context):
+
+    # Check if the request is from the correct origin
+    if event['httpMethod'] == 'OPTIONS':
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST,OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type"
+            }
+        }
+
+    # Check if the request method is POST
+    if event['httpMethod'] != 'POST':
+        return {
+            "statusCode": 405,
+            "body": json.dumps({"error": "Method Not Allowed"})
+        }
+    # Check if the request is from the correct origin
     # Parse the incoming form data
     try:
         body = json.loads(event['body'])
@@ -19,8 +38,8 @@ def handler(event, context):
         }
 
     # Email configuration
-    sender_email = os.getenv("GMAIL_USER")
-    sender_password = os.getenv("GMAIL_PASSWORD")
+    sender_email = os.getenv("MAIL_USER")
+    sender_password = os.getenv("MAIL_PASSWORD")
     recipient_email = os.getenv("RECIPIENT_EMAIL")
     smtp_server = os.getenv("MAIL_SMTP_SERVER")
     smtp_port = int(os.getenv("MAIL_SMTP_PORT"))

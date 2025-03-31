@@ -30,7 +30,7 @@ const t = useTranslations(locale);
         <div class="subheader cms">
             <Content/>
         </div>
-        <form class="flex flex-col gap-4">
+        <form class="flex flex-col gap-4" id="contact-form">
             <div class="flex flex-col sm:flex-row sm:gap-4">
                 <div class="flex flex-col flex-1">
                     <label for="firstname" class="text-sm font-medium mb-2">{t('contact.first-name')}</label>
@@ -98,3 +98,27 @@ const t = useTranslations(locale);
         }
     }
 </style>
+
+<script>
+    const form = document.getElementById('contact-form');
+    const DISPATCHER_ENDPOINT = 'https://contactformjonathanmswfffojx-contact-form.functions.fnc.fr-par.scw.cloud'; // Replace with your actual endpoint
+
+    if (form) {
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(form as HTMLFormElement);
+            const data = Object.fromEntries(formData.entries());
+            console.log(data);
+
+            const res = await fetch(DISPATCHER_ENDPOINT, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            // Here you can send the data to your server or API
+        });
+    }
+</script>
