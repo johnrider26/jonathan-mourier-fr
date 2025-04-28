@@ -162,3 +162,24 @@ h1, h2, h3, h4, h5, h6 {
         margin: 16px 0 ;
     }
 }
+
+.btn {
+    font-family: var(--open-sans);
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn.secondary {
+    box-shadow: 0px 4px 27px 0px #592E83;
+    transition: all 0.3s ease-in-out;
+    font-family: var(--open-sans);
+    color: white;
+}
+
+.btn.secondary:hover {
+    box-shadow: 0px 4px 27px 2px #592E83;
+}

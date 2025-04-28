@@ -5,9 +5,11 @@
     "src/**/*.ts",
     "src/**/*.astro",
     "src/**/*.md",
-    "src/**/*.svg",
-    ],
-  "exclude": ["dist"],
+    "src/**/*.svg"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": "./src",
@@ -36,6 +38,7 @@
       "@assets/*": [
         "assets/*"
       ]
-    }
-  },
+    },
+    "jsx": "preserve"
+  }
 }
