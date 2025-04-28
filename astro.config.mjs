@@ -21,6 +21,6 @@ export default defineConfig({
         }
     },
     experimental: {
-        svg: true,
+        //svg: true,
     }
 });

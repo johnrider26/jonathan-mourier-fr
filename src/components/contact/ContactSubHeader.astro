@@ -85,6 +85,12 @@ const t = useTranslations(locale);
             <div class="flex justify-end">
                 <Button text={t('contact.send')} type='submit' variant="secondary" />
             </div>
+            <div>
+                <altcha-widget
+                challengeurl="https://captcha.jonathanmourier.fr"
+                floating
+              ></altcha-widget>
+            </div>
 
         </form>
     </div>
@@ -100,8 +106,10 @@ const t = useTranslations(locale);
 </style>
 
 <script>
+    import('altcha');
+
     const form = document.getElementById('contact-form');
-    const DISPATCHER_ENDPOINT = 'https://contactformjonathanmswfffojx-contact-form.functions.fnc.fr-par.scw.cloud'; // Replace with your actual endpoint
+    const DISPATCHER_ENDPOINT = 'https://contact.jonathanmourier.fr'; // Replace with your actual endpoint
 
     if (form) {
         form.addEventListener('submit', async function(event) {
