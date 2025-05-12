@@ -38,6 +38,7 @@
           t("contact.email")
         }}</label>
         <input
+          @keyup="wakeUp()"
           type="email"
           id="mail"
           v-model="formData.email"
@@ -51,7 +52,6 @@
           t("contact.message")
         }}</label>
         <textarea
-          @keyup="wakeUp()"
           id="message"
           v-model="formData.message"
           class="border-b border-black py-2 focus:border-primary focus:outline-none"
@@ -72,19 +72,27 @@
           t("contact.rgpd")
         }}</label>
       </div>
-      <div class="flex justify-end items-center">
-        <div v-if="isAttempted && !isSuccess" class="w-10 h-10 mr-4">
+      <div class="flex justify-end items-center ">
+        <div v-if="isWakingUp" class="w-10 h-10 mr-4 relative group">
+          <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            {{ t("contact.server-waiting") }}
+          </div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#D3ACFF"></stop><stop offset=".3" stop-color="#D3ACFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#D3ACFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#D3ACFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#D3ACFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#D3ACFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
         </div>
-        <div v-if="!isSuccess" class="text-xs h-fit px-3 py-1 bg-lime-600 mr-4 rounded-2xl flex items-center justify-center">
-          <span>Serveur ok</span>
+        <div v-if="isSuccess" class="h-5 w-5 bg-lime-600 mr-4 rounded-xl relative group">
+          <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            {{ t("contact.server-ready") }}
+          </div>
         </div>
-        <div v-if="isSuccess" class="text-xs h-fit px-3 py-1 bg-red-600 mr-4 rounded-2xl flex items-center justify-center">
-          <span>Serveur ko</span>
+        <div v-if="!isSuccess && !isWakingUp && isAttempted" class="h-5 w-5 bg-red-600 mr-4 rounded-xl relative group">
+          <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            {{ t("contact.server-ko") }}
+          </div>
         </div>
         <button
           type="submit"
-          class="btn cursor-pointer text-sm secondary rounded-2xl flex border-2 border-[#AEB4BD] items-center bg-[#0E161B] py-2 px-12"
+          :disabled="!isSuccess"
+          class="btn cursor-pointer text-sm secondary rounded-2xl flex border-2 border-[#AEB4BD] items-center bg-[#0E161B] py-2 px-12 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {{ t("contact.send") }}
         </button>
@@ -106,6 +114,7 @@ interface Translation {
 
 const isAttempted = ref(false);
 const isSuccess = ref(false);
+const isWakingUp = ref(false);
 
 const props = defineProps<{
   translations: Translation;
@@ -119,7 +128,7 @@ const formData = ref({
   email: "",
   message: "",
   rgpd: false,
-  altcha_payload: "",
+  altcha: "",
 });
 
 const t = (key: string) => {
@@ -130,8 +139,10 @@ function wakeUp() {
   if (isAttempted.value || isSuccess.value) {
     return;
   }
+  isWakingUp.value = true;
   isAttempted.value = true;
   fetch("https://contact.jonathanmourier.fr").then((response) => {
+    isWakingUp.value = false;
     console.log(response);
     if (response.ok) {
       isSuccess.value = true;
@@ -142,16 +153,14 @@ function wakeUp() {
 }
 
 function submitForm() {
-  if (!formData.value.rgpd) {
-    alert("Please accept the RGPD policy.");
-    return;
-  }
+ 
+  formData.value.altcha = altchaPayload.value;
 
-  formData.value.altcha_payload = altchaPayload.value;
+  console.log("Form submitted:", formData.value);
 
   fetch("https://contact.jonathanmourier.fr", {
     method: "POST",
-    body: JSON.stringify(formData),
+    body: JSON.stringify(formData.value),
   })
     .then((response) => {
       if (response.ok) {

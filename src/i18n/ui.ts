@@ -30,6 +30,9 @@ export const ui = {
     'contact.rgpd': 'J\'accepte que mes données soient collectées et utilisées pour me contacter.',
     'contact.rgpd-error': 'Vous devez accepter la collecte de vos données.',
     'contact.success': 'Votre message a bien été envoyé. Je vous répondrai dès que possible.',
+    'contact.server-waiting': 'Serveur en cours de démarrage, veuillez patienter...',
+    'contact.server-ready': 'Serveur OK',
+    'contact.server-ko': 'Erreur serveur',
   },
   en: {
       'html.title': 'Fullstack Web Developer',
@@ -53,6 +56,9 @@ export const ui = {
       'contact.rgpd': 'I accept that my data is collected and used to contact me.',
       'contact.rgpd-error': 'You must accept the collection of your data.',
       'contact.success': 'Your message has been sent successfully. I will reply as soon as possible.',
+      'contact.server-waiting': 'Server starting, please wait...',
+      'contact.server-ready': 'Server OK',
+      'contact.server-ko': 'Server error',
   },
 } as const;
 
