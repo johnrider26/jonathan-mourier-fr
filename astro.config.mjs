@@ -29,5 +29,11 @@ export default defineConfig({
       //svg: true,
   },
 
-  integrations: [vue()]
+  integrations: [vue({
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.indexOf('-') >= 0
+      }
+    }
+  })]
 });
