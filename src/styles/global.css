@@ -183,3 +183,25 @@ h1, h2, h3, h4, h5, h6 {
 .btn.secondary:hover {
     box-shadow: 0px 4px 27px 2px #592E83;
 }
+
+.cms h2,
+.cms h3,
+.cms h4 {
+    @apply text-neutral-900 font-bold mb-2 mt-4;
+}
+
+.cms h2 {
+    @apply text-2xl;
+}
+
+.cms h3 {
+    @apply text-xl;
+}
+
+.cms h4 {
+    @apply text-lg;
+}
+
+.cms p {
+    @apply leading-relaxed;
+}

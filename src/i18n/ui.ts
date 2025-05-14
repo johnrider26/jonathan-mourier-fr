@@ -30,9 +30,12 @@ export const ui = {
     'contact.rgpd': 'J\'accepte que mes données soient collectées et utilisées pour me contacter.',
     'contact.rgpd-error': 'Vous devez accepter la collecte de vos données.',
     'contact.success': 'Votre message a bien été envoyé. Je vous répondrai dès que possible.',
-    'contact.server-waiting': 'Serveur en cours de démarrage, veuillez patienter...',
-    'contact.server-ready': 'Serveur OK',
+    'contact.server-waiting': 'Le temps que vous rédigiez votre message, je m\'occupe de démarrer le serveur...',
+    'contact.server-ready': 'Serveur démarré',
     'contact.server-ko': 'Erreur serveur',
+    'contact.thanks-you': 'Merci de m\'avoir contacté ! 😊 Je vous répondrai dès que possible.',
+    'contact.error': 'Oh non, une erreur est survenue lors de l\'envoi de votre message. Pourtant ça marchait sur mon poste ! 😅',
+    'contact.back': 'Page d\'accueil',
   },
   en: {
       'html.title': 'Fullstack Web Developer',
@@ -56,9 +59,12 @@ export const ui = {
       'contact.rgpd': 'I accept that my data is collected and used to contact me.',
       'contact.rgpd-error': 'You must accept the collection of your data.',
       'contact.success': 'Your message has been sent successfully. I will reply as soon as possible.',
-      'contact.server-waiting': 'Server starting, please wait...',
+      'contact.server-waiting': 'While you write your message, I\'m starting the server...',
       'contact.server-ready': 'Server OK',
       'contact.server-ko': 'Server error',
+      'contact.thanks-you': 'Thank you for contacting me. I will reply as soon as possible.',
+      'contact.error': 'Oh no, an error occurred while sending your message. It was working on my machine! 😅',
+      'contact.back': 'Back to home',
   },
 } as const;
 
@@ -79,13 +85,11 @@ export const headerRoutes: Record<string, Link[]> = {
 export const footerRoutes: Record<string, Link[]> = {
   fr: [
     { href: '/mentions-legales', label: 'Mentions légales' },
-    { href: '/politique-de-confidentialite', label: 'Politique de confidentialité' },
-    { href: '/plan-du-site', label: 'Plan du site' },
+    { href: '/politique-de-confidentialite', label: 'Politique de confidentialité' }
   ],
   en: [
     { href: '/en/legals', label: 'Legals' },
-    { href: '/en/privacy-policy', label: 'Privacy policy' },
-    { href: '/en/sitemap', label: 'Sitemap' },
+    { href: '/en/privacy-policy', label: 'Privacy policy' }
   ],
 }
 

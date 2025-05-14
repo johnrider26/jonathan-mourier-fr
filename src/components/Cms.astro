@@ -1,0 +1,24 @@
+---
+import Title from "@components/shared/title/Title.astro";
+
+
+interface Props {
+  data: MD;
+}
+
+const { data } = Astro.props;
+
+const { title } = data.frontmatter;
+
+const Content = data.Content;
+---
+
+<div id="subheader">
+  <div class="flex flex-col gap-4 z-10 container pt-[120px]">
+    <Title text={title} tag="h1" />
+    <div class="subheader cms">
+      <Content />
+    </div>
+  </div>
+</div>
+

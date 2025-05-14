@@ -1,9 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import Cms from '@components/Cms.astro';
+import * as legals from '@content/legals/en/content.md';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import * as contactSubHeaderPost from '@content/contact/contactSubheader.md';
-
-import ContactSubHeader from '@components/contact/ContactSubHeader.astro';
 
 
 const lang = getLangFromUrl(Astro.url);
@@ -17,5 +16,5 @@ const t = useTranslations(lang);
 	pageTitle={t('html.title')}
 	locale={lang}
 	>
-	<ContactSubHeader data={contactSubHeaderPost} locale={lang} />
+	<Cms data={legals} />
 </Layout>

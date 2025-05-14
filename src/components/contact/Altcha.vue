@@ -48,7 +48,7 @@ onUnmounted(() => {
   <!-- Configure your `challengeurl` and remove the `test` attribute, see docs: https://altcha.org/docs/website-integration/#using-altcha-widget -->
   <altcha-widget
     ref="altchaWidget"
-    style="--altcha-max-width: 100%"
+    style="--altcha-max-width: 200px"
     floating
     challengeurl="https://captcha.jonathanmourier.fr"
   ></altcha-widget>
