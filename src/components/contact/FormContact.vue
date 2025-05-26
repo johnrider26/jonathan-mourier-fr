@@ -105,7 +105,7 @@
         </button>
       </div>
       <div>
-        <Altcha v-model:payload="altchaPayload" />
+        <Altcha v-model:payload="altchaPayload" :challengeurl="props.captchaEndpoint" />
       </div>
       <div v-if="isOnError" class="text-red-500 text-sm mt-2 text-right ">
         <p>{{ t("contact.error") }}</p>
@@ -133,6 +133,8 @@ const fetchAttempted = ref(0);
 
 const props = defineProps<{
   translations: Translation;
+  captchaEndpoint: string;
+  contactEndPoint: string;
 }>();
 
 const altchaPayload = ref("");
@@ -162,7 +164,7 @@ function wakeUp() {
 }
 
 function fetchContact() {
-  fetch("https://contact.jonathanmourier.fr")
+  fetch(props.contactEndPoint)
     .then((response) => {
       isWakingUp.value = false;
       if (response.ok) {
@@ -190,7 +192,7 @@ function submitForm() {
 
   isLoading.value = true;
 
-  fetch("https://contact.jonathanmourier.fr", {
+  fetch(props.contactEndPoint, {
     method: "POST",
     body: JSON.stringify(formData.value),
   })

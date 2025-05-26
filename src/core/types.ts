@@ -14,6 +14,7 @@ export interface Multi {
 }
 
 export interface Link {
+    id: string;
     href: string;
     label: string;
 }

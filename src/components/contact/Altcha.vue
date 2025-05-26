@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
+import { PUBLIC_CAPTCHA_ENDPOINT } from "astro:env/client";
 
 // Importing altcha package will introduce a new element <altcha-widget>
 import "altcha";
@@ -9,6 +10,10 @@ const props = defineProps({
   payload: {
     type: String,
     required: false,
+  },
+  challengeurl: {
+    type: String,
+    required: true,
   },
 });
 const emit = defineEmits<{
@@ -50,6 +55,6 @@ onUnmounted(() => {
     ref="altchaWidget"
     style="--altcha-max-width: 200px"
     floating
-    challengeurl="https://captcha.jonathanmourier.fr"
+    :challengeurl="props.challengeurl"
   ></altcha-widget>
 </template>

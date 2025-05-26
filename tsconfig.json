@@ -37,7 +37,10 @@
       ],
       "@assets/*": [
         "assets/*"
-      ]
+      ],
+      "@env/*": [
+        ".env"
+      ],
     },
     "jsx": "preserve"
   }

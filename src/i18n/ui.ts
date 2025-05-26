@@ -71,25 +71,25 @@ export const ui = {
 
 export const headerRoutes: Record<string, Link[]> = {
   fr: [
-    { href: '/#qui-suis-je', label: 'Qui suis-je' },
-    { href: '/blog', label: 'Mon blog' },
-    { href: '/contact', label: 'Contact' },
+    { id: 'who-i-am', href: '/#qui-suis-je', label: 'Qui suis-je' },
+    { id: 'blog', href: '/blog', label: 'Mon blog' },
+    { id: 'contact', href: '/contact', label: 'Contact' },
   ],
   en: [
-    { href: '/en/#who-i-am', label: 'Who I am' },
-    { href: '/en/blog', label: 'My blog' },
-    { href: '/en/contact', label: 'Contact' },
+    { id: 'who-i-am', href: '/en/#who-i-am', label: 'Who I am' },
+    { id: 'blog', href: '/en/blog', label: 'My blog' },
+    { id: 'contact', href: '/en/contact', label: 'Contact' },
   ],
 }
 
 export const footerRoutes: Record<string, Link[]> = {
   fr: [
-    { href: '/mentions-legales', label: 'Mentions légales' },
-    { href: '/politique-de-confidentialite', label: 'Politique de confidentialité' }
+    { id: 'legals', href: '/legals', label: 'Mentions légales' },
+    { id: 'privacy', href: '/privacy-policy', label: 'Politique de confidentialité' }
   ],
   en: [
-    { href: '/en/legals', label: 'Legals' },
-    { href: '/en/privacy-policy', label: 'Privacy policy' }
+    { id: 'legals', href: '/en/legals', label: 'Legals' },
+    { id: 'privacy', href: '/en/privacy-policy', label: 'Privacy policy' }
   ],
 }
 

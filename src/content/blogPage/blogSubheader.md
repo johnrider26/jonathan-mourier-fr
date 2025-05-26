@@ -2,4 +2,4 @@
 title: Mon Blog
 ---
 
-Here are the frameworks, libraries, services and runtimes I have experience with. This is not a complete list! I'm constantly gaining new skills, and hence it can be a little bit outdated.
+Retrouvez ici l'ensemble de mes articles techniques sur le développement web, les bonnes pratiques, et mes retours d'expérience.

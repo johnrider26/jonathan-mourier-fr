@@ -2,6 +2,7 @@
 import Title from "@components/shared/title/Title.astro";
 import { getAllUiFromLang } from "@i18n/utils";
 import FormContact from "@components/contact/FormContact.vue";
+import {PUBLIC_CAPTCHA_ENDPOINT, PUBLIC_CONTACT_ENDPOINT} from "astro:env/client";
 
 interface Props {
   data: MD;
@@ -23,7 +24,11 @@ const translations = getAllUiFromLang(locale);
     <div class="subheader cms">
       <Content />
     </div>
-    <FormContact translations={translations} client:only="vue" />
+    <FormContact 
+    translations={translations} 
+    captchaEndpoint={PUBLIC_CAPTCHA_ENDPOINT}
+    contactEndPoint={PUBLIC_CONTACT_ENDPOINT}
+    client:only="vue" />
   </div>
 </div>
 
@@ -35,29 +40,3 @@ const translations = getAllUiFromLang(locale);
     }
   }
 </style>
-
-<script>
-  import("altcha");
-
-  const form = document.getElementById("contact-form");
-  const DISPATCHER_ENDPOINT = "https://contact.jonathanmourier.fr"; // Replace with your actual endpoint
-
-  if (form) {
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
-      const formData = new FormData(form as HTMLFormElement);
-      const data = Object.fromEntries(formData.entries());
-      console.log(data);
-
-      const res = await fetch(DISPATCHER_ENDPOINT, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      // Here you can send the data to your server or API
-    });
-  }
-</script>
