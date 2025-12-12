@@ -12,9 +12,9 @@ This website is edited by:
 
 ## Hosting
 
-This website is hosted by Scaleway
+This website is hosted by OVH
 
-8 rue de la Ville l'Evêque, 75008 Paris
+2 rue Kellermann, 59100 Roubaix, France
 
 ## Intellectual Property
 

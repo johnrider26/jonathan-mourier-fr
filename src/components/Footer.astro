@@ -1,45 +1,54 @@
 ---
-import AstroLogo from '@assets/icons/astro.svg';
-import EuropeLogo from '@assets/icons/europe.svg';
-import { useTranslations } from '@i18n/utils';
-import { footerRoutes as routes } from '@i18n/ui';
+import AstroLogo from "@assets/icons/astro.svg";
+import EuropeLogo from "@assets/icons/europe.svg";
+import { useTranslations } from "@i18n/utils";
+import { footerRoutes as routes } from "@i18n/ui";
 
 const year = new Date().getFullYear();
 
 const { lang } = Astro.props;
 
 const t = useTranslations(lang);
-
 ---
 
-<footer class="md:flex-row flex-col px-16 py-6 mt-30 text-sm flex justify-center xl:justify-between items-center flex-wrap gap-2">
-    <ul class="footer-list flex-col md:flex-row flex items-center md:gap-8 gap-2 text-sm">
-        <li>
-          &copy; {year} Jonathan Mourier
-        </li>
-        <li>
-          <div class="flex items-center gap-2 w-full">
-            <div>
-              {t('footer.made-with')} Astro
-            </div>
-            <AstroLogo class="astro-logo" />
-          </div>
-        </li>
-        <li>
-          <div class="flex items-center gap-2 w-full">
-            <div>
-              {t('footer.hosted-by')} Scaleway
-            </div>
-            <EuropeLogo class="eu-logo" />
-          </div>  
-        </li>
-      </ul>
-      <ul class="footer-list flex items-center md:gap-8 gap-2 xl:ml-auto md:flex-row flex-col">
-        {routes && routes[lang]?.map((route, index) => (
-          <li class:list={[index === 0 ? 'xl:ml-auto' : '']}><a href={route.href}>{route.label}</a></li>
+<footer
+  class="md:flex-row flex-col px-16 py-6 mt-30 text-sm flex justify-center xl:justify-between items-center flex-wrap gap-2"
+>
+  <ul
+    class="footer-list flex-col md:flex-row flex items-center md:gap-8 gap-2 text-sm"
+  >
+    <li>
+      &copy; {year} Jonathan Mourier
+    </li>
+    <li>
+      <div class="flex items-center gap-2 w-full">
+        <div>
+          {t("footer.made-with")} Astro
+        </div>
+        <AstroLogo class="astro-logo" />
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center gap-1 w-full">
+        <div>
+          {t("footer.hosted-by")} OVH🔥
+        </div>
+        <EuropeLogo class="eu-logo" />
+      </div>
+    </li>
+  </ul>
+  <ul
+    class="footer-list flex items-center md:gap-8 gap-2 xl:ml-auto md:flex-row flex-col"
+  >
+    {
+      routes &&
+        routes[lang]?.map((route, index) => (
+          <li class:list={[index === 0 ? "xl:ml-auto" : ""]}>
+            <a href={route.href}>{route.label}</a>
+          </li>
         ))
-        }
-    </ul>
+    }
+  </ul>
 </footer>
 
 <style lang="scss">
@@ -60,13 +69,13 @@ const t = useTranslations(lang);
       @media (min-width: 1279px) {
         &:not(:first-child) {
           &::after {
-            content: '';
+            content: "";
             display: block;
             width: 8px;
             height: 8px;
             background: var(--color-primary);
             border-radius: 100%;
-            position:absolute;
+            position: absolute;
             left: -20px;
             top: 50%;
             transform: translateY(-50%);

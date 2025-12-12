@@ -12,9 +12,9 @@ Ce site web est édité par :
 
 ## Hébergement
 
-Ce site est hébergé par Scaleway
+Ce site est hébergé par OVH
 
-8 rue de la Ville l’Evêque, 75008 Paris
+2 rue Kellermann, 59100 Roubaix, France
 
 ## Propriété intellectuelle
 
