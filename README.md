@@ -1,4 +1,4 @@
-#Jonathan Mourier's website
+# Jonathan Mourier's website
 
 Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. 
 Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. 
