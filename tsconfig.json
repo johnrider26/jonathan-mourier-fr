@@ -1,0 +1,47 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*.ts",
+    "src/**/*.astro",
+    "src/**/*.md",
+    "src/**/*.svg"
+  ],
+  "exclude": [
+    "dist"
+  ],
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@*": [
+        "*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@content/*": [
+        "content/*"
+      ],
+      "@i18n/*": [
+        "i18n/*"
+      ],
+      "@core/*": [
+        "core/*"
+      ],
+      "@layouts/*": [
+        "layouts/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@env/*": [
+        ".env"
+      ],
+    },
+    "jsx": "preserve"
+  }
+}

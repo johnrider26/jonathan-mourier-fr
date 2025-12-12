@@ -1,0 +1,66 @@
+---
+import AxopenLogo from '@assets/icons/axopen.svg';
+import LinkIcon from '@assets/icons/link.svg';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+    title: string;
+    excerpt: string;
+    source: 'Axopen' | 'Dev.to' | 'Medium';
+    url: string;   
+}
+
+
+const {
+    title,
+    excerpt,
+    source,
+    url
+} = Astro.props;
+
+---
+
+<article class="blog-card">
+    <div class="blog-card-container flex flex-col justify-between mb-20">
+        <h3 class="blog-card-header text-3xl font-bold">
+            {title}
+        </h3>
+        <div class="blog-card-body">
+            <p>{excerpt.length > 130 ? `${excerpt.slice(0, 130)}...` : excerpt}</p>
+        </div>
+        <div class="blog-card-footer flex justify-between items-center">
+            <a href={url} target="_blank" rel="noopener noreferrer" class="font-bold">
+                <div class="flex items-center">
+                    <span class="mr-2">{t('blog.read')}</span>
+                    <LinkIcon />
+                </div>
+
+            </a>
+            <div class="blog-card-source">
+                {source === 'Axopen' && <AxopenLogo />}
+                {source !== 'Axopen' && <span>{source}</span>}
+            </div>
+        </div>
+    </div>
+</article>
+
+<style lang="scss">
+    .blog-card {
+        width: 440px;
+        height: 320px;
+        padding: 20px;
+        border-radius: 10px;
+        background: radial-gradient(146.79% 114.99% at 0% 106.76%, #9D6CE5 0%, #BB9EEB 50%, #BB9DE3 100%);
+
+        .blog-card-container {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            background: white;
+        }
+    }
+</style>

@@ -1,0 +1,29 @@
+---
+import * as subHeaderPost from '@content/home/en/subheader.md';
+import * as mainHomePost from '@content/home/en/mainhome.md';
+import * as picturesHomePost from '@content/home/en/pictureshome.md';
+import * as blogHomePost from '@content/home/en/bloghome.md';
+import SubHeader from '@components/home/SubHeader.astro';
+import Layout from '@layouts/Layout.astro';
+import MainHome from '@components/home/MainHome.astro';
+import PicturesHome from '@components/home/PicturesHome.astro';
+import BlogHome from '@components/home/BlogHome.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+---
+
+<Layout 
+	title={t('html.title')}
+	description={t('html.description')}
+	pageTitle={t('html.title')}
+	locale={lang}
+	>
+	<SubHeader data={subHeaderPost} lang={lang} />
+	<MainHome data={mainHomePost} lang={lang} />
+	<PicturesHome data={picturesHomePost} />
+	<BlogHome data={blogHomePost} />
+</Layout>

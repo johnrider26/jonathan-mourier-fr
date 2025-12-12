@@ -1,0 +1,130 @@
+---
+import logo from '@assets/logo.png';
+import Github from '@assets/icons/github.svg';
+import Gitlab from '@assets/icons/gitlab.svg';
+import Linkedin from '@assets/icons/linkedin.svg';
+import { headerRoutes as routes } from '@i18n/ui';
+
+const { lang }  = Astro.props;
+
+---
+
+<header>
+    <div class="flex px-16 py-6 justify-between items-center">
+        <a href="/" class="logo">
+            <img src={logo.src} alt="Jonathan Mourier's logo"/>
+        </a>
+
+        <!-- Burger Menu Button -->
+        <button id="burger-menu" class="burger-menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+            </svg>
+        </button>
+
+        <!-- Desktop Menu -->
+        <nav class="desktop-menu">
+            <ul class="flex flex-end items-center uppercase font-semibold text-md gap-7">
+              {routes && routes[lang]?.map(route => (
+                <li><a href={route.href}>{route.label}</a></li>
+              ))}
+                <li>
+                  <button id="language-switcher" value={lang === 'en' ? '' : 'en'}
+                  class=" w-8 h-8 flex items-center justify-center bg-[#0E161B] text-white rounded-4xl cursor-pointer">
+                    <span class="text-sm">
+                        {lang === 'en' ? 'FR' : 'EN'}
+                    </span>
+                  </button>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <nav id="mobile-menu" class="mobile-menu hidden absolute top-20 left-0 w-full bg-white shadow-lg">
+            <ul class="flex flex-col uppercase font-semibold text-md p-4 gap-4">
+                {routes && routes[lang]?.map(route => (
+                  <li><a href={route.href}>{route.label}</a></li>
+                ))}
+                <li class="py-2">
+                  <div class="flex items-center justify-between p-4 gap-2">
+                    <a href="/cv"><Github /></a>
+                    <a href="/cv"><Gitlab /></a>
+                    <a href="/cv"><Linkedin /></a>
+                  </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style lang="scss">
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+  .logo img {
+    width: 300px;
+    @media (max-width: 997px) {
+      width: 200px;
+    }
+  }
+
+  nav ul li {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+  }
+
+  .burger-menu {
+    display: none;
+    @media (max-width: 997px) {
+      display: block;
+    }
+  }
+
+  .desktop-menu {
+    @media (max-width: 997px) {
+      display: none;
+    }
+  }
+
+  .mobile-menu {
+    @media (min-width: 798px) {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+
+  const burgerMenu = document.getElementById('burger-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (burgerMenu && mobileMenu) {
+    burgerMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !burgerMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+
+  const languageSwitcher = document.getElementById('language-switcher');
+  
+  if (!languageSwitcher) {
+    throw new Error('Language switcher not found');
+  }
+  languageSwitcher.addEventListener('click', (event) => {
+    const selectedLang = languageSwitcher.value;
+
+    const currentUrl = new URL(window.location.href);
+    currentUrl.pathname = `/${selectedLang}${currentUrl.pathname.split('/')[2] ?? currentUrl.pathname}`;
+    window.location.href = currentUrl.toString();
+  });
+</script>

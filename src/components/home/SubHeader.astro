@@ -1,0 +1,108 @@
+---
+import Language from "@components/shared/languages/Language.astro";
+import Button from "@components/shared/button/Button.astro";
+import Angular from "@assets/icons/angular.svg";
+import Java from "@assets/icons/java.svg";
+import SpringBoot from "@assets/icons/spring.svg";
+import TypeScript from "@assets/icons/typescript.svg";
+import Github from "@assets/icons/github.svg";
+import Gitlab from "@assets/icons/gitlab.svg";
+import Linkedin from "@assets/icons/linkedin.svg";
+import ScrollDown from "@components/shared/scroll-down/ScrollDown.astro";
+import AnimatedTitle from "@components/shared/title/AnimatedTitle.astro";
+import { useTranslations } from "@i18n/utils";
+
+interface Props {
+  data: MD;
+  lang: "en" | "fr";
+}
+
+const { data, lang } = Astro.props;
+
+const { topTitle, iAm, words, myCv } = data.frontmatter;
+
+const Content = data.Content;
+
+const t = useTranslations(lang);
+---
+
+<div id="subheader">
+  <div
+    class="flex flex-col gap-4 items-center justify-center z-10 text-center container pt-[86px]"
+  >
+    <small class="top-title">{topTitle}</small>
+    <h1 class="title lg:text-8xl text-6xl">{iAm},</h1>
+    <AnimatedTitle words={words} />
+    <div class="lg:text-3xl text-2xl lg:leading-12 leading-10">
+      <Content />
+    </div>
+    <div class="languages flex items-center justify-center gap-12 py-4">
+      <Language name="Java">
+        <Java />
+      </Language>
+      <Language name="Spring Boot">
+        <SpringBoot />
+      </Language>
+      <Language name="TypeScript">
+        <TypeScript />
+      </Language>
+      <Language name="Angular">
+        <Angular />
+      </Language>
+    </div>
+    <div
+      class="call-to-action flex justify-center items-center gap-8 flex-wrap"
+    >
+      <Button text={myCv} href="#cv" variant="secondary" />
+      <div class="divider hidden sm:block"></div>
+      <div class="flex items-center justify-center w-full sm:w-fit gap-8">
+        <a href="https://github.com/johnrider26" target="_blank"
+          ><Github class="icon-media" /></a
+        >
+        <a href="https://gitlab.com/jojomourier" target="_blank"
+          ><Gitlab class="icon-media" /></a
+        >
+        <a href="https://www.linkedin.com/in/jonathan-mourier/" target="_blank"
+          ><Linkedin class="icon-media" /></a
+        >
+      </div>
+    </div>
+    <div class="pt-8">
+      <ScrollDown scrollTo={t("anchor.who-i-am")} />
+    </div>
+  </div>
+
+  <style lang="scss">
+    #subheader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      small.top-title {
+        font-size: 1.67rem;
+        z-index: 1;
+        font-weight: 800;
+      }
+
+      h1.title {
+        //font-size: 6rem;
+        z-index: 1;
+        font-weight: 900;
+        //line-height: 6rem;
+      }
+
+      h2.subtitle {
+        font-size: 4rem;
+        z-index: 1;
+        font-weight: 700;
+      }
+
+      .divider {
+        width: 1px;
+        height: 50px;
+        background-color: #000;
+      }
+    }
+  </style>
+</div>

@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('/assets/fonts/open_sans/OpenSansCondensed-SemiBold.woff2') format('woff2'),
+    url('/assets/fonts/open_sans/OpenSansCondensed-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('/assets/fonts/open_sans/OpenSansCondensed-ExtraBold.woff2') format('woff2'),
+    url('/assets/fonts/open_sans/OpenSansCondensed-ExtraBold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('/assets/fonts/open_sans/OpenSansCondensed-Bold.woff2') format('woff2'),
+    url('/assets/fonts/open_sans/OpenSansCondensed-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('/assets/fonts/open_sans/OpenSansCondensed-Regular.woff2') format('woff2'),
+    url('/assets/fonts/open_sans/OpenSansCondensed-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/open_sans/OpenSans-SemiBold.woff2') format('woff2'),
+        url('/assets/fonts/open_sans/OpenSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/open_sans/OpenSans-Regular.woff2') format('woff2'),
+        url('/assets/fonts/open_sans/OpenSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/open_sans/OpenSans-Medium.woff2') format('woff2'),
+        url('/assets/fonts/open_sans/OpenSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/open_sans/OpenSans-Bold.woff2') format('woff2'),
+        url('/assets/fonts/open_sans/OpenSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('/assets/fonts/inter/Inter18pt-Regular.woff2') format('woff2'),
+    url('/assets/fonts/inter/Inter18pt-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('/assets/fonts/inter/Inter18pt-SemiBold.woff2') format('woff2'),
+    url('/assets/fonts/inter/Inter18pt-SemiBold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('/assets/fonts/inter/Inter18pt-ExtraBold.woff2') format('woff2'),
+    url('/assets/fonts/inter/Inter18pt-ExtraBold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('/assets/fonts/inter/Inter18pt-Bold.woff2') format('woff2'),
+    url('/assets/fonts/inter/Inter18pt-Bold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}

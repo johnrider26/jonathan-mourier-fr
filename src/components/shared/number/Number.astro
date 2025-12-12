@@ -1,0 +1,47 @@
+---
+interface Props {
+    number: string | number;
+    text?: string;
+    suffixe?: string; // Suffixes to display after the number
+    duration?: number; // Animation duration in milliseconds
+}
+
+const { number, text = '', duration = 1000, suffixe = '' } = Astro.props;
+---
+
+<div class="number-container flex flex-col align-start">
+    <div class="flex items-center">
+        <span class="number" data-target={number}>0</span>
+        <span class="suffixe">{suffixe}</span>
+    </div>
+    {text && <span class="text">{text}</span>}
+</div>
+
+<style>
+    .number {
+        font-size: 4rem;
+        line-height: 3.5rem;
+        font-weight: 800;
+        font-family: var(--open-sans-condensed);
+        background: linear-gradient(to right, #592E83, #140A1D);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        min-width: 100px;
+    }
+
+    .suffixe {
+        font-size: 3rem;
+        line-height: 3.5rem;
+        font-weight: 800;
+        font-family: var(--open-sans-condensed);
+        color: #140A1D;
+        margin-left: -0.2rem;
+    }
+
+    .text {
+        font-size: 1.2rem;
+        color: #6D597A;
+        font-weight: bold;
+        font-family: var(--open-sans-condensed);
+    }
+</style>

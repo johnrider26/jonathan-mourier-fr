@@ -1,0 +1,20 @@
+---
+import Layout from '@layouts/Layout.astro';
+import BlogSubHeader from '@components/blog/BlogSubHeader.astro';
+import * as blogSubHeaderPost from '@content/blogPage/blogSubheader.md';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+---
+
+<Layout 
+	title={"Mon blog"}
+	description={"Bienvenue sur mon blog où je référence mes différents articles."}
+	pageTitle={"Mon blog"}
+	locale={lang}
+	>
+	<BlogSubHeader data={blogSubHeaderPost} />
+</Layout>

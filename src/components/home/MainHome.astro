@@ -1,0 +1,98 @@
+---
+import Title from '@components/shared/title/Title.astro';
+import Number from '@components/shared/number/Number.astro';
+import { useTranslations } from '@i18n/utils';
+
+interface Props {
+    data: MD;
+    lang: string;
+}
+
+const {
+    data,
+    lang
+} = Astro.props;
+
+const {
+    whoIam,
+    years,
+    xpYears,
+    coffeeLiter,
+    bmxYears
+} = data.frontmatter;
+
+const t = useTranslations(lang as ('en' | 'fr'));
+
+const Content = data.Content;
+
+// Data birthdate
+const birthday = new Date('1998-11-08');
+const today = new Date();
+const diff = today.getTime() - birthday.getTime();
+const yearsOld = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+
+// Data xp
+const xpStart = new Date('2018-09-01');
+const diffXp = today.getTime() - xpStart.getTime();
+const xp = Math.floor(diffXp / (1000 * 60 * 60 * 24 * 365.25));
+const xpDay = Math.floor(diffXp / (1000 * 60 * 60 * 24));
+
+// Data coffee
+const coffeesDay = 2.5;
+const oneCoffeeLiter = 0.08;
+const liter = Math.floor((coffeesDay * oneCoffeeLiter) * xpDay);
+---
+
+<div id={t('anchor.who-i-am')} class="pt-10">
+    <div class="container flex flex-col gap-16">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+            <Title text={whoIam} tag="h2" />
+
+            <div class="numbers grid justify-between grid-cols-2 sm:flex md:w-2/3 w-full gap-4">
+                <Number number={yearsOld} text={years} />
+                <Number number={xp} text={xpYears} />
+                <Number number={liter} suffixe="+" text={coffeeLiter} />
+                <Number number="17" text={bmxYears} />
+            </div>
+        </div>
+        <div class="w-full cms">
+            <Content />
+        </div>
+    </div>
+</div>
+
+<script>
+    function animateNumber(element: HTMLElement) {
+        const target = parseInt(element.dataset.target || '0');
+        const duration = parseInt(element.closest('.number-container')?.dataset.duration || '1000');
+        const steps = 60;
+        const increment = target / steps;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target.toString();
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current).toString();
+            }
+        }, duration / steps);
+    }
+
+    // Animate when element becomes visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateNumber(entry.target as HTMLElement);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Starts animation when 10% of the element is visible
+    });
+
+    document.querySelectorAll('.number').forEach(number => {
+        observer.observe(number);
+    });
+</script>

@@ -1,0 +1,28 @@
+---
+const { name } = Astro.props
+---
+
+<div class="language flex gap-2 items-center">
+    <div class="language-icon">
+        <slot />
+    </div>
+    <span class="text-xs language-text hidden md:inline-block">{name}</span>
+</div>
+
+<style lang="scss">
+    .language {
+
+    }
+
+    .language-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .language-text {
+        font-family: var(--open-sans);
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+</style>
+

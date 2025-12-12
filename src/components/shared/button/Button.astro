@@ -1,0 +1,36 @@
+---
+interface Props {
+    text: string;
+    href?: string;
+    variant?: 'primary' | 'secondary';
+    className?: string;
+    uppercase?: boolean;
+    type?: 'button' | 'submit' | 'reset';
+}
+
+const { text, href, variant = 'primary', className = '', uppercase = true, type = 'button' } = Astro.props;
+
+const baseStyles = 'btn cursor-pointer rounded-2xl text-sm flex border-2 border-[#AEB4BD] items-center py-2 px-12';
+const variants = {
+    primary: 'rounded-2xl flex border-2 border-[#AEB4BD] items-center py-2 px-12',
+    secondary: 'secondary rounded-2xl flex border-2 border-[#AEB4BD] items-center bg-[#0E161B] py-2 px-12'
+};
+---
+
+{
+    href ? (
+        <a
+            href={href}
+            class:list={[baseStyles, variants[variant], className, uppercase ? 'uppercase' : '']}
+        >
+            {text}
+        </a>
+    ) : (
+        <button
+            type={type}
+            class:list={[baseStyles, variants[variant], className]}
+        >
+            {text}
+        </button>
+    )
+}
